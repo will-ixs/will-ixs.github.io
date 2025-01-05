@@ -1,0 +1,37 @@
+---
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+const characters = text.split('');
+---
+
+<style>
+  .wave-text {
+    display: inline-block;
+    width: auto;
+  }
+
+  .wave-text span {
+    display: inline-block;
+    animation: wave 1.5s ease-in-out infinite;
+    animation-delay: calc(0.1s * var(--delay));
+  }
+
+  @keyframes wave {
+    0%, 100% {
+      transform: translateY(0px);
+        
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }  
+</style>
+
+<span class="wave-text">
+    {characters.map((char, index) => (
+        <span style={`--delay: ${index + 1};`}>{char}</span>
+      ))}
+</span>
