@@ -6,8 +6,12 @@ import FormattedDate from '../components/FormattedDate.astro';
 import WavyText from '../components/WavyText.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
+
 import { getCollection } from 'astro:content';
 const projects = (await getCollection('projects')).filter(doc => doc.data.featured);
+
+//custom pages
+const a_star_date = new Date('Jan 4 2025');
 ---
 
 <!doctype html>
@@ -34,6 +38,7 @@ const projects = (await getCollection('projects')).filter(doc => doc.data.featur
 				transition: 0.2s ease;
 			}
 			ul li img {
+				max-height: 480px;
 				margin-bottom: 0.5rem;
 				border-radius: 12px;
 			}
@@ -78,14 +83,14 @@ const projects = (await getCollection('projects')).filter(doc => doc.data.featur
 	<body>
 		<Header />
 		<main>
-			<h1>Howdy! 🤠</h1>
+			<h1>Howdy!</h1>
 			<p>
 				I'm a student at <a href="https://www.tamu.edu/index.html">Texas A&M University</a> majoring in Computer Science
 				and minoring in Game Design & Development. I have interests in graphics programming and cybersecurity.
 			</p>
 			<p>
 				This main purpose of this site is to serve as a way to organize and track completion on both my finished projects as well as those that are still in progress.
-				A list of my favorites are below, but feel free to check out the <a href="/projects"> <WavyText text='projects'/> </a> section for a more complete list. 
+				A couple of my favorites are below, but feel free to check out the <a href="/projects"> <WavyText text='projects'/> </a> section for a more complete list. 
 			</p>			  
 			<br>
 			<ul>

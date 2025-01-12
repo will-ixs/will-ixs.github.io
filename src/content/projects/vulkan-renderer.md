@@ -10,3 +10,4 @@ This was my first real dive into graphics programming. I have taken the single c
 
 The project is based off of [vkguide](https://vkguide.dev) by [vblanco](https://github.com/vblanco20-1) up through about chapter 3, where I figured I had learned enough to complete my initial goal of implementing shadow mapping. The renderer currently has implemented shadow mapping and a mesh uploading in a background thread.
 
+![depthmap.png](/depthmap.png)
