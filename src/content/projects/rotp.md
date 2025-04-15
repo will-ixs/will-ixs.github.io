@@ -2,7 +2,7 @@
 title: 'Revenge of the Pharaoh'
 description: 'Revenge of the Pharaoh - A top down dungeon crawler.'
 pubDate: 'Jan 7 2025'
-featured: false
+featured: true
 heroImage: '/rotp.gif'
 ---
 

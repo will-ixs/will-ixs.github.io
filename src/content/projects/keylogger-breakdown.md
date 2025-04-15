@@ -2,7 +2,7 @@
 title: 'Keylogger Breakdown'
 description: 'Reverse engineering a keylogger.'
 pubDate: 'Jan 11 2025'
-featured: true
+featured: false
 heroImage: '/function.png'
 ---
 

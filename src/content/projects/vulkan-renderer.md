@@ -1,8 +1,8 @@
 ---
-title: 'Vulkan Renderer (WIP)'
+title: 'First Vulkan Renderer'
 description: 'WIP Vulkan Renderer'
 pubDate: 'Jan 3 2025'
-featured: true
+featured: false
 heroImage: '/shadowmapping.png'
 ---
 
