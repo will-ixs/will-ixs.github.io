@@ -1,9 +1,10 @@
 ---
-title: 'First Vulkan Renderer'
-description: 'WIP Vulkan Renderer'
+title: 'Beginning the Vulkan journey'
+description: 'My first Vulkan Renderer'
 pubDate: 'Jan 3 2025'
 featured: false
 heroImage: '/shadowmapping.png'
+category: 'Technical'
 ---
 
 This was my first real dive into graphics programming. I have taken the single computer graphics class that my university offers, which gave me a good introduction to many graphics concepts, but was fully based in OpenGL and had most of the OpenGL code abstracted away for us. We did some projects that were very useful for building understanding like a few different shadow techniques, a CPU rasterizer, and a CPU Ray Tracer with a BVH. I did well in the class and enjoyed the projects so I wanted to dive further into graphics programming, but I had no clue how much I did not know. I figured I would redo one of my class projects but in Vulkan to learn a more modern graphics API. It took me much longer than I expected, but I also have learned so much more than I could have imagined when I started.

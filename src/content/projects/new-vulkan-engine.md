@@ -4,6 +4,7 @@ description: 'Redoing my Vulkan engine'
 pubDate: 'Apr 12 2025'
 featured: true
 heroImage: '/pbd.png'
+category: 'Technical'
 ---
 
 [GitHub Link](https://github.com/will-ixs/Sun)

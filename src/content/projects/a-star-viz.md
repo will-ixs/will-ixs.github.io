@@ -1,9 +1,10 @@
 ---
-title: 'A* Pathfinding '
+title: 'Visualizing A* Pathfinding '
 description: 'Interactive A* Pathfinding'
 pubDate: 'Jan 6 2025'
 featured: false
 heroImage: '/astar.png'
+category: 'Technical'
 ---
 Check out the interactive demo which runs in browser [here](https://will-ixs.itch.io/astar) on itch. Note that in browsers with gesture controls (Opera, Vivaldi) the intended controls may not work as smoothly/require extra input.
 

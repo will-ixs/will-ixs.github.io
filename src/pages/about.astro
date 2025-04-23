@@ -2,16 +2,8 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
-import WavyText from '../components/WavyText.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
-
-import { getCollection } from 'astro:content';
-const projects = (await getCollection('projects')).filter(doc => doc.data.featured);
-
-//custom pages
-const a_star_date = new Date('Jan 4 2025');
 ---
 
 <!doctype html>
@@ -83,28 +75,20 @@ const a_star_date = new Date('Jan 4 2025');
 	<body>
 		<Header />
 		<main>
-			<h3>Howdy!</h3>
+			<h1>Howdy!</h1>
 			<p>
-				I'm a student at <a href="https://www.tamu.edu/index.html">Texas A&M University</a> majoring in Computer Science
-				and minoring in Game Design & Development. Please feel free to check out the <a href="/projects"> <WavyText text='projects'/> </a> section or either listed below. 
-			</p>			  
-			<br>
-			<h3>Featured:</h3>
-			<ul>
-				{
-					projects.map((post) => (
-						<li>
-							<a href={`/projects/${post.id}/`}>
-								<img width={720} height={360} src={post.data.heroImage} alt="" />
-								<h4 class="title">{post.data.title}</h4>
-								<p class="date">
-									<FormattedDate date={post.data.pubDate} />
-								</p>
-							</a>
-						</li>
-					))
-				}
-			</ul>
+				I'm Will, a student at <a href="https://www.tamu.edu/index.html">Texas A&M University</a> majoring in Computer Science
+				and minoring in Game Design & Development. I'm interested in in graphics programming, engine development, technical design, and cybersecurity.
+			</p>
+            <p>
+                I started programming in early high school making simple games like hangman and learning some Unity. 
+                I focused more on IT stuff like computer maintenance and networking for the rest of high school, even earning a (now expired) CompTIA A+
+                certification. When applying for Colleges I chose Computer Science, as it was the closest I could find that matched my interests to that point.
+            </p>
+            <p>
+                I eventually just lucked into taking classes I liked- Computer Graphics & Animation, Game Design, Software Reverse Engineering. Now this collection 
+                of my personal projects includes mostly things relevant to these fields, the projects I've felt pride or joy in creating.
+            </p>
 
 		</main>
 		<Footer />
