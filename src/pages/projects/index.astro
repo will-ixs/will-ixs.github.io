@@ -57,6 +57,18 @@ const posts = (await getCollection('projects')).sort(
 			ul a:hover img {
 				box-shadow: var(--box-shadow);
 			}
+			video:{
+				max-width: 100%;
+				width: auto;
+				aspect-ratio: auto 640 / 320;
+			}
+			ul li video {
+				margin-bottom: 0.5rem;
+				border-radius: 12px;
+			}
+			ul a:hover video {
+				box-shadow: var(--box-shadow);
+			}
 			@media (max-width: 720px) {
 				ul {
 					gap: 0.5em;
@@ -75,11 +87,11 @@ const posts = (await getCollection('projects')).sort(
 				<br>
 				<ul>
 					{
-						posts.filter((post) => post.data.category === "Technical")
+						posts.filter((post) => post.data.heroVideo === true)
 						.map((post) => (
 							<li>
 								<a href={`/projects/${post.id}/`}>
-									<img width={640} height={320} src={post.data.heroImage} alt="" />
+									<video src={post.data.heroImage} autoplay loop style="max-width: 100%"/>
 									<h5 class="title">{post.data.title}</h5>
 									<p class="date">
 										{post.data.category}
@@ -90,7 +102,7 @@ const posts = (await getCollection('projects')).sort(
 					}
 
 					{
-					posts.filter((post) => post.data.category === "Design")
+					posts.filter((post) => post.data.heroVideo === false)
 					.map((post) => (
 						<li>
 							<a href={`/projects/${post.id}/`}>

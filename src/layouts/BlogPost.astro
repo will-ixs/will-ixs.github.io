@@ -7,7 +7,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 
 type Props = CollectionEntry<'projects'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage, category } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, heroVideo } = Astro.props;
 ---
 
 <html lang="en">
@@ -18,6 +18,12 @@ const { title, description, pubDate, updatedDate, heroImage, category } = Astro.
 				width: calc(100% - 2em);
 				max-width: 100%;
 				margin: 0;
+			}
+			video{
+				display:block;
+				margin: 0 auto;
+				border-radius: 10px;
+				height:auto;
 			}
 			.hero-image {
 				width: 100%;w
@@ -58,8 +64,13 @@ const { title, description, pubDate, updatedDate, heroImage, category } = Astro.
 		<Header />
 		<main>
 			<article>
-				<div class="hero-image">
-					{heroImage && <img width={720} height={360} src={heroImage} alt="" />}
+				<div class="hero-image">				
+				{
+				heroVideo ? (
+					<video width={720} height={360} src={heroImage} autoplay muted loop playsinline />
+				) : (
+					<img width={720} height={360} src={heroImage} alt="" />
+				)}
 				</div>
 				<div class="prose">
 					<div class="title">

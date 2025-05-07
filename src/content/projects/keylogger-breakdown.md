@@ -4,6 +4,7 @@ description: 'Reverse engineering a keylogger.'
 pubDate: 'Jan 11 2025'
 featured: false
 heroImage: '/function.png'
+heroVideo: false
 category: 'Technical'
 ---
 

@@ -92,17 +92,33 @@ const a_star_date = new Date('Jan 4 2025');
 			<h3>Featured:</h3>
 			<ul>
 				{
-					projects.map((post) => (
+					projects.filter((post) => post.data.heroVideo === true)
+					.map((post) => (
 						<li>
 							<a href={`/projects/${post.id}/`}>
-								<img width={720} height={360} src={post.data.heroImage} alt="" />
-								<h4 class="title">{post.data.title}</h4>
+								<video src={post.data.heroImage} autoplay loop style="max-width: 100%; border-radius:8px;"/>
+								<h5 class="title">{post.data.title}</h5>
 								<p class="date">
-									<FormattedDate date={post.data.pubDate} />
+									{post.data.category}
 								</p>
 							</a>
 						</li>
 					))
+				}
+
+				{
+				projects.filter((post) => post.data.heroVideo === false)
+				.map((post) => (
+					<li>
+						<a href={`/projects/${post.id}/`}>
+							<img width={640} height={320} src={post.data.heroImage} alt="" />
+							<h5 class="title">{post.data.title}</h5>
+							<p class="date">
+								{post.data.category}
+							</p>
+						</a>
+					</li>
+				))
 				}
 			</ul>
 

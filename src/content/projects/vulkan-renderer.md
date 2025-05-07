@@ -4,6 +4,7 @@ description: 'My first Vulkan Renderer'
 pubDate: 'Jan 3 2025'
 featured: false
 heroImage: '/shadowmapping.png'
+heroVideo: false
 category: 'Technical'
 ---
 

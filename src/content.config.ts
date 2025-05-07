@@ -10,7 +10,8 @@ const projects = defineCollection({
 		pubDate: z.coerce.date(),
 		featured: z.boolean(),
 		updatedDate: z.coerce.date().optional(),
-		heroImage: z.string().optional(),
+		heroImage: z.string(),
+		heroVideo: z.boolean(),
 		category: z.string(),
 	}),
 });

@@ -4,6 +4,7 @@ description: ''
 pubDate: 'Jan 10 2025'
 featured: false
 heroImage: '/frog.jpg'
+heroVideo: false
 category: 'Design'
 ---
 

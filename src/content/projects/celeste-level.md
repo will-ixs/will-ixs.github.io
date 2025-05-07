@@ -4,6 +4,7 @@ description: 'Designing a Celeste level starting from nothing.'
 pubDate: 'Apr 22 2025'
 featured: true
 heroImage: '/celeste-step3.png'
+heroVideo: false
 category: 'Design'
 ---
 

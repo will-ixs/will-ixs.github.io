@@ -2,8 +2,9 @@
 title: 'New Vulkan Engine'
 description: 'Redoing my Vulkan engine'
 pubDate: 'Apr 12 2025'
-featured: true
+featured: false
 heroImage: '/pbd.png'
+heroVideo: false
 category: 'Technical'
 ---
 

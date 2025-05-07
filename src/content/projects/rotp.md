@@ -4,6 +4,7 @@ description: 'Revenge of the Pharaoh - A top down dungeon crawler.'
 pubDate: 'Jan 7 2025'
 featured: false
 heroImage: '/rotp.gif'
+heroVideo: false
 category: 'Design'
 ---
 
