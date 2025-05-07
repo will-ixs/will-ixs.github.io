@@ -17,7 +17,7 @@ I only finished a multithreaded CPU implementation before the class deadline, bu
 Here is the video discussing the implementation, at this point I only had the CPU implementation working:
 
 <video controls width="720" height="360">
-  <source src="/particles-presentation.mp4" type="video/mp4" />
+  <source src="/particles.mp4" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
 
