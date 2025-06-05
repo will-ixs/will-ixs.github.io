@@ -3,7 +3,7 @@ title: 'Position Based Fluids'
 description: 'Implementing PBF- an extension to the PBD framework'
 pubDate: 'May 6 2025'
 featured: true
-heroImage: '/splash.webm'
+heroImage: '/gpu_particles.webm'
 heroVideo: true
 category: 'Technical'
 ---
