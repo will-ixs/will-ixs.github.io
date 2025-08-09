@@ -1,16 +1,39 @@
 ---
-
+import Hero from "../components/Hero.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<main>
+  <Hero />
+  <section class="min-h-screen p-12 bg-black text-white text-center">
+    <div class="max-w-3xl mx-auto mb-10">
+      <h2 class="text-emerald-500 text-3xl font-bold mb-4">About Me</h2>
+      <p class="text-lg leading-relaxed">
+        I'm a passionate developer with a love for making things go fast.
+      </p>
+      <br /><br />
+      <p class="text-lg leading-relaxed italic text-gray-400">
+        BS in Computer Science, Minor in Game Design & Development from Texas
+        A&M University
+        <br />
+        Emphasis in Computer Graphics
+      </p>
+    </div>
+    <div class="max-w-3xl mx-auto mb-10">
+      <h2 class="text-emerald-500 text-3xl font-bold mb-4">Projects</h2>
+      <ProjectCard title="Fluid Simulation" body="Test description of porject card" link="fluid" filename="bg"></ProjectCard>
+      <h3 class="text-lg leading-relaxed">Creating a Fluid Simulation</h3>
+      <br />
+      <h3 class="text-lg leading-relaxed">Designing my Vulkan Renderer</h3>
+      <br />
+      <h3 class="text-lg leading-relaxed">Reverse Engineering a Keylogger</h3>
+      <br />
+      <h3 class="text-lg leading-relaxed">Implementing A* Pathfinding</h3>
+      <br />
+      <h3 class="text-lg leading-relaxed">Revenge of the Pharaoh</h3>
+      <br />
+      <h3 class="text-lg leading-relaxed">Creating AR Frogger</h3>
+      <br />
+    </div>
+  </section>
+</main>

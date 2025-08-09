@@ -1,0 +1,69 @@
+---
+const { children } = Astro.props;
+---
+
+<div
+  id="container"
+  class="fixed top-0 left-0 w-full h-full will-change-transform"
+>
+  {children}
+</div>
+
+<script>
+  let scrollY = 0;
+  let currentY = 0;
+  let velocity = 0;
+  let maxScroll = 0;
+  const friction = 0.92;
+  const sensitivity = 1;
+
+  const container = document.getElementById("container");
+
+  function updateMaxScroll() {
+    if (container) {
+      maxScroll = container.scrollHeight - window.innerHeight;
+    }
+  }
+  updateMaxScroll();
+  window.addEventListener("resize", updateMaxScroll);
+
+  window.addEventListener("wheel", (e) => {
+    velocity += e.deltaY * sensitivity;
+  });
+
+  let touchStartY = 0;
+  window.addEventListener("touchstart", (e) => {
+    if (e.touches.length === 1) {
+      touchStartY = e.touches[0].clientY;
+    }
+  });
+  window.addEventListener("touchmove", (e) => {
+    if (e.touches.length === 1) {
+      let delta = touchStartY - e.touches[0].clientY;
+      velocity += delta * 0.8;
+      touchStartY = e.touches[0].clientY;
+    }
+  });
+
+  function animate() {
+    scrollY += velocity;
+    velocity *= friction;
+
+    if (scrollY < 0) {
+      scrollY = 0;
+      velocity = 0;
+    }
+    if (scrollY > maxScroll) {
+      scrollY = maxScroll;
+      velocity = 0;
+    }
+
+    currentY += (scrollY - currentY) * 0.12;
+    if (container) {
+      container.style.transform = `translateY(${-currentY}px)`;
+    }
+
+    requestAnimationFrame(animate);
+  }
+  animate();
+</script>

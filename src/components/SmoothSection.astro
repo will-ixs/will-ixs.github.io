@@ -1,0 +1,7 @@
+---
+const { bg = 'bg-gray-800', textColor = 'text-white', className = '' } = Astro.props;
+---
+
+<section class={`h-screen flex items-center justify-center text-5xl ${bg} ${textColor} ${className}`}>
+  <slot />
+</section>
