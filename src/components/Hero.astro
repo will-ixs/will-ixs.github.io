@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 ---
+
 <section class="relative h-screen w-full overflow-hidden">
   <video
     class="absolute top-0 left-0 w-full h-full object-cover"
@@ -8,35 +9,27 @@ import "../styles/global.css";
     autoplay
     muted
     loop
-    playsinline
-  />
+    playsinline></video>
 
   <div class="relative z-10 h-full flex items-center justify-center flex-col">
     <h1
-      class="hello-text text-emerald-500 text-shadow-lg text-shadow-black text-5xl md:text-7xl font-bold transition-all duration-500 ease-out"
+      class="text-emerald-500 text-shadow-lg text-shadow-black text-5xl md:text-7xl font-bold transition-all duration-500 ease-out"
     >
       Howdy!
     </h1>
-    <br>
+    <br />
     <p
-    class="hello-text text-white text-shadow-xs text-shadow-black text-2xl md:text-4xl font-bold transition-all duration-500 ease-out">
+      class="text-white text-shadow-xs text-shadow-black text-2xl md:text-4xl font-bold transition-all duration-500 ease-out"
+    >
       Welcome to my site.
+    </p>
+    <p
+      class="text-white text-shadow-xs text-shadow-black text-2xl md:text-4xl font-bold top-5 mt-100"
+    >
+      🞃
     </p>
   </div>
 
-  <div class="absolute top-0 left-0 w-full h-full bg-black opacity-70 z-0"></div>
+  <div class="absolute top-0 left-0 h-[105%] w-full bg-black opacity-70 z-0">
+  </div>
 </section>
-
-<script is:inline> 
-  window.addEventListener('scroll', () => {
-    const test = Array.from(document.getElementsByClassName("hello-text"));
-    if (test.length === 0) return;
-    const scrollY = window.scrollY;
-    const max = window.innerHeight * 0.5;
-    const ratio = Math.min(scrollY / max, 1);
-    test.forEach(e => {
-        e.style.transform = `translateY(-${ratio * 40}px)`;
-        e.style.opacity = `${1 - ratio}`;
-      });
-    });
-</script>

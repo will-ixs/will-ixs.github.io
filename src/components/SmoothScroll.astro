@@ -1,21 +1,21 @@
 ---
-const { children } = Astro.props;
+import "../styles/global.css"
 ---
 
 <div
   id="container"
   class="fixed top-0 left-0 w-full h-full will-change-transform"
 >
-  {children}
+<slot/>
 </div>
 
-<script>
+<script is:inline>
   let scrollY = 0;
   let currentY = 0;
   let velocity = 0;
   let maxScroll = 0;
   const friction = 0.92;
-  const sensitivity = 1;
+  const sensitivity = 0.25;
 
   const container = document.getElementById("container");
 
@@ -40,16 +40,17 @@ const { children } = Astro.props;
   window.addEventListener("touchmove", (e) => {
     if (e.touches.length === 1) {
       let delta = touchStartY - e.touches[0].clientY;
-      velocity += delta * 0.8;
+      velocity += delta * sensitivity;
       touchStartY = e.touches[0].clientY;
     }
   });
 
   function animate() {
+    updateMaxScroll()
     scrollY += velocity;
     velocity *= friction;
 
-    if (scrollY < 0) {
+    if (scrollY < 0.01) {
       scrollY = 0;
       velocity = 0;
     }
@@ -57,12 +58,12 @@ const { children } = Astro.props;
       scrollY = maxScroll;
       velocity = 0;
     }
-
     currentY += (scrollY - currentY) * 0.12;
+    currentY = Math.floor(currentY);
+
     if (container) {
       container.style.transform = `translateY(${-currentY}px)`;
     }
-
     requestAnimationFrame(animate);
   }
   animate();

@@ -1,12 +1,23 @@
 ---
-const { title, body, link, filename } = Astro.props;
+const { title, link, filename } = Astro.props;
 ---
 
-<li class="text- transition-all duration-200 max-w-1/4 no-underline block">
-  <video class="max-w-full mb-2 border-emerald-500 rounded"src={`${filename}.mp4`} autoplay loop/>
-  <h5>{title}</h5>
+<li
+  class="text-center transition-all duration-200 no-underline block w-[100%-3em] md:w-[calc(50%-3em)] lg:w-[calc(33%-3em)] md:"
+>
+  <video
+    class="hover-play max-w-full mb-2 border-emerald-500 rounded filter brightness-50 hover:brightness-100 transition-filter duration-300 ease-in-out"
+    muted
+    loop
+  >
+    <source src={`${filename}.webm`} type="video/webm" />
+    <source src={`${filename}.mp4`} type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
+  <h5><strong>{title}</strong></h5>
+
   <p class="text-white">
-    {body}
+    <slot />
   </p>
 
   <a class="text-emerald-500" href={`/projects/${link}/`}>Read More...</a>

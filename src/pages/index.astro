@@ -1,39 +1,86 @@
 ---
-import Hero from "../components/Hero.astro";
-import ProjectCard from "../components/ProjectCard.astro";
+import Hero from '../components/Hero.astro';
+import SmoothScroll from '../components/SmoothScroll.astro';
+import SmoothSection from '../components/SmoothSection.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import SectionContent from '../components/SectionContent.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 ---
 
-<main>
-  <Hero />
-  <section class="min-h-screen p-12 bg-black text-white text-center">
-    <div class="max-w-3xl mx-auto mb-10">
-      <h2 class="text-emerald-500 text-3xl font-bold mb-4">About Me</h2>
-      <p class="text-lg leading-relaxed">
-        I'm a passionate developer with a love for making things go fast.
-      </p>
-      <br /><br />
-      <p class="text-lg leading-relaxed italic text-gray-400">
-        BS in Computer Science, Minor in Game Design & Development from Texas
-        A&M University
-        <br />
-        Emphasis in Computer Graphics
-      </p>
-    </div>
-    <div class="max-w-3xl mx-auto mb-10">
-      <h2 class="text-emerald-500 text-3xl font-bold mb-4">Projects</h2>
-      <ProjectCard title="Fluid Simulation" body="Test description of porject card" link="fluid" filename="bg"></ProjectCard>
-      <h3 class="text-lg leading-relaxed">Creating a Fluid Simulation</h3>
-      <br />
-      <h3 class="text-lg leading-relaxed">Designing my Vulkan Renderer</h3>
-      <br />
-      <h3 class="text-lg leading-relaxed">Reverse Engineering a Keylogger</h3>
-      <br />
-      <h3 class="text-lg leading-relaxed">Implementing A* Pathfinding</h3>
-      <br />
-      <h3 class="text-lg leading-relaxed">Revenge of the Pharaoh</h3>
-      <br />
-      <h3 class="text-lg leading-relaxed">Creating AR Frogger</h3>
-      <br />
-    </div>
-  </section>
-</main>
+<html lang="en" class="overflow-hidden bg-gray-900 font-sans">
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>will-ixs</title>
+    <link rel="icon" type="image/x-icon" href="/favi.jpg">
+  </head>
+  <body>
+    <SmoothScroll>
+      <SmoothSection bg="bg-black">
+        <Hero/>
+      </SmoothSection>
+      <SmoothSection className="bg-gradient-to-b from-black to-cyan-950">
+        <SectionHeader title="About Me"/>
+        <SectionContent>
+          <p class="text-white text-shadow-xs text-shadow-black text-2xl md:text-4xl text-center font-bold my-10 max-w-1/2">
+            I'm William Stephenson, a passionate generalist software developer based in College Station, Texas. 
+            <br><br>
+            I create high-performance systems with reliability at their core.
+          </p>
+          <p class="text-gray-500 text-shadow-xs text-shadow-black text-l md:text-2xl text-center font-bold my-10 max-w-1/2">
+            BS Computer Science, Minor in Game Design & Development
+          </p>
+        </SectionContent>
+
+        <SectionHeader title="Portfolio"/>
+        <SectionContent>
+          <ul class="flex flex-wrap gap-8 list-none mx-10 p-0 justify-center">
+            <ProjectCard title="Fluid Simulation" link="fluid" filename="bg"> 
+              Realtime Compute Shader PBD Fluid Simulation
+            </ProjectCard>
+            
+            <ProjectCard title="Vulkan Renderer" link="fluid" filename="bg"> 
+              Modern Forward Vulkan Renderer including Frustum Culling, Scene Graph, Bindless, PBR, Multithreading, glTF Loading and more.
+            </ProjectCard>
+            
+            <ProjectCard title="A* Pathfinding" link="fluid" filename="bg"> 
+              Interactable demonstration/visuzliation of A* Pathfinding on an arbitrary grid. 
+            </ProjectCard>
+            
+            <ProjectCard title="Revenge of the Pharaoh" link="fluid" filename="bg"> 
+              2D Dungeon Crawling Action Game built with a team of 6 throughout a semester in Unity.
+            </ProjectCard>
+            
+            <ProjectCard title="AR Frogger" link="fluid" filename="bg"> 
+              Augmented Reality variation of the classic Arcade game Frogger.
+            </ProjectCard>
+            
+            <ProjectCard title="Malware Analysis of Keylogger" link="fluid" filename="bg"> 
+              Reverse engineering and threat analysis of a live keylogger using Ghidra and other tools. 
+            </ProjectCard>
+          </ul>
+        </SectionContent>
+
+        <SectionHeader title="Contact"/>
+        <SectionContent>
+          <p class="text-white text-shadow-xs text-shadow-black text-2xl md:text-4xl font-bold top-5 my-10">
+            bluesky @willowsea, github @will-ixs, discord @winterkeep, email wmstephenson9@gmail.com
+          </p>
+        </SectionContent>
+      </SmoothSection>
+    </SmoothScroll>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("video.hover-play").forEach((el) => {
+      if (!(el instanceof HTMLVideoElement)) return;
+
+      el.addEventListener("mouseenter", () => el.play());
+      el.addEventListener("mouseleave", () => {
+        el.pause();
+        el.currentTime = 0;
+      });
+    });
+  });
+</script>
+  </body>
+</html>
