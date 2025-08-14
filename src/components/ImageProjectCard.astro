@@ -5,14 +5,10 @@ const { title, link, filename } = Astro.props;
 <li
   class="text-center transition-all duration-200 no-underline block w-[100%-3em] md:w-[calc(50%-3em)] lg:w-[calc(33%-3em)] md:"
 >
-  <video
+  <img
     class="hover-play max-w-full mb-2 border-emerald-500 rounded filter brightness-50 hover:brightness-100 transition-filter duration-300 ease-in-out"
-    muted
-    loop
-  >
-    <source src={`${filename}.mp4`} type="video/mp4" />
-    Your browser does not support HTML5 video.
-  </video>
+    src={`${filename}.jpg`}
+  />
   <h5><strong>{title}</strong></h5>
 
   <p class="text-white">

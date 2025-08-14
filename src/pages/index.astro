@@ -5,12 +5,13 @@ import SmoothSection from '../components/SmoothSection.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SectionContent from '../components/SectionContent.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import ImageProjectCard from '../components/ImageProjectCard.astro';
 ---
 
 <html lang="en" class="overflow-hidden bg-gray-900 font-sans">
   <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>will-ixs</title>
+    <title>William Stephenson</title>
     <link rel="icon" type="image/x-icon" href="/favi.jpg">
   </head>
   <body>
@@ -26,44 +27,50 @@ import ProjectCard from '../components/ProjectCard.astro';
             <br><br>
             I create high-performance systems with reliability at their core.
           </p>
-          <p class="text-gray-500 text-shadow-xs text-shadow-black text-l md:text-2xl text-center font-bold my-10 max-w-1/2">
-            BS Computer Science, Minor in Game Design & Development
+          <p class="text-gray-500 text-shadow-xs text-shadow-black text-l md:text-2xl text-center font-bold my-10 max-w-3/4">
+            <em>
+            BS Computer Science, Minor in Game Design & Development from Texas A&M University
+            </em>
           </p>
         </SectionContent>
 
         <SectionHeader title="Portfolio"/>
         <SectionContent>
           <ul class="flex flex-wrap gap-8 list-none mx-10 p-0 justify-center">
-            <ProjectCard title="Fluid Simulation" link="fluid" filename="bg"> 
+            <ProjectCard title="Fluid Simulation" link="fluid" filename="pbd"> 
               Realtime Compute Shader PBD Fluid Simulation
             </ProjectCard>
             
-            <ProjectCard title="Vulkan Renderer" link="fluid" filename="bg"> 
+            <ProjectCard title="Vulkan Renderer" link="sun-renderer" filename="sponza"> 
               Modern Forward Vulkan Renderer including Frustum Culling, Scene Graph, Bindless, PBR, Multithreading, glTF Loading and more.
             </ProjectCard>
             
-            <ProjectCard title="A* Pathfinding" link="fluid" filename="bg"> 
-              Interactable demonstration/visuzliation of A* Pathfinding on an arbitrary grid. 
+            <ProjectCard title="A* Pathfinding" link="astar" filename="astar"> 
+              Interactive demonstration/visuzliation of A* Pathfinding on an arbitrary grid. 
             </ProjectCard>
             
-            <ProjectCard title="Revenge of the Pharaoh" link="fluid" filename="bg"> 
+            <ProjectCard title="Revenge of the Pharaoh" link="rotp" filename="rotp"> 
               2D Dungeon Crawling Action Game built with a team of 6 throughout a semester in Unity.
             </ProjectCard>
             
-            <ProjectCard title="AR Frogger" link="fluid" filename="bg"> 
+            <ProjectCard title="AR Frogger" link="frogger" filename="frog"> 
               Augmented Reality variation of the classic Arcade game Frogger.
             </ProjectCard>
             
-            <ProjectCard title="Malware Analysis of Keylogger" link="fluid" filename="bg"> 
+            <ImageProjectCard title="Malware Analysis of Keylogger" link="ghidra" filename="function"> 
               Reverse engineering and threat analysis of a live keylogger using Ghidra and other tools. 
-            </ProjectCard>
+            </ImageProjectCard>
           </ul>
         </SectionContent>
 
         <SectionHeader title="Contact"/>
         <SectionContent>
-          <p class="text-white text-shadow-xs text-shadow-black text-2xl md:text-4xl font-bold top-5 my-10">
-            bluesky @willowsea, github @will-ixs, discord @winterkeep, email wmstephenson9@gmail.com
+          <p class="text-white text-shadow-xs text-shadow-black text-l md:text-2xl text-center my-10 max-w-1/2 overflow-ellipsis">
+            bluesky @<a class="underline" href="https://bsky.app/profile/willowsea.bsky.social" target="_blank">willowsea</a>
+            <br>
+            github @<a class="underline" href="https://github.com/will-ixs" target="_blank">will-ixs</a>
+            <br>
+            email wmstephenson9@gmail.com
           </p>
         </SectionContent>
       </SmoothSection>

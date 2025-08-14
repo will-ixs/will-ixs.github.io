@@ -1,0 +1,68 @@
+---
+import SmoothScroll from "../../components/SmoothScroll.astro";
+import SmoothSection from "../../components/SmoothSection.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import SectionContent from "../../components/SectionContent.astro";
+---
+
+<html lang="en" class="overflow-hidden bg-cyan-950 font-sans">
+  <head>
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>AR Frogger</title>
+    <link rel="icon" type="image/x-icon" href="/favi.jpg" />
+  </head>
+  <body>
+    <SmoothScroll>
+      <SmoothSection className="bg-gradient-to-b from-black to-cyan-950">
+        <SectionHeader title="AR Frogger" />
+        <SectionContent>
+          <video
+            class="max-w-1/2 mb-2 border-emerald-500 rounded-2xl"
+            autoplay
+            muted
+            loop
+          >
+            <source src="/frog.mp4" type="video/mp4" />
+            Your browser does not support HTML5 video.
+          </video>
+
+          <p
+            class="text-white text-shadow-xs text-shadow-black text-2xl md:text-4xl text-center font-bold my-10 max-w-1/2"
+          >
+            Overview
+          </p>
+
+          <p
+            class="text-gray-200 text-shadow-xs text-shadow-black text-l md:text-2xl text-center my-10 max-w-3/4"
+          >
+            This was a one of three projects with a partner in a Special Topics
+            course covering Augmented Reality. The goal of this project was to
+            cover mid-air tracking using the Vuforia plugin for Unity. Our
+            assignment was to build frogger in AR. The game loop is as follows:
+            Beginning with placing the starting platform in front of the camera,
+            then five floating platforms that grow as the user holds the screen,
+            and then the ending platform.
+
+            <br /><br />
+            Once the setup is complete the player needs to walk within range of their
+            frog to activate it. The player aims their camera in the direction they
+            want the frog to jump, presses and holds to charge the jump, and the
+            frog jumps when they release. The player has 10 lives to make it to the
+            end, once a platform is reached it acts as a checkpoint.
+          </p>
+        </SectionContent>
+      </SmoothSection>
+    </SmoothScroll>
+
+    <a
+      href="/"
+      class="absolute top-4 left-4 bg-emerald-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-emerald-500 transition"
+    >
+      ← Back to Home
+    </a>
+  </body>
+</html>

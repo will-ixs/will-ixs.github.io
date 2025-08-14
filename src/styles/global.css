@@ -1,1 +1,11 @@
 @import "tailwindcss";
+@layer base {
+  ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+  }
+  ol {
+    list-style: decimal;
+    margin-left: 1.5rem;
+  }
+}

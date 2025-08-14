@@ -1,0 +1,89 @@
+---
+import SmoothScroll from "../../components/SmoothScroll.astro";
+import SmoothSection from "../../components/SmoothSection.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import SectionContent from "../../components/SectionContent.astro";
+---
+
+<html lang="en" class="overflow-hidden bg-cyan-950 font-sans">
+  <head>
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Vulkan Renderer</title>
+    <link rel="icon" type="image/x-icon" href="/favi.jpg" />
+  </head>
+  <body>
+    <SmoothScroll>
+      <SmoothSection className="bg-gradient-to-b from-black to-cyan-950">
+        <SectionHeader title="Vulkan Renderer" />
+        <SectionContent>
+          <video
+            class="max-w-1/2 mb-2 border-emerald-500 rounded-2xl"
+            autoplay
+            muted
+            loop
+          >
+            <source src="/sponza.mp4" type="video/mp4" />
+            Your browser does not support HTML5 video.
+          </video>
+          <p
+            class="text-white text-shadow-xs text-shadow-black text-2xl md:text-4xl text-center font-bold my-10 max-w-1/2"
+          >
+            Overview
+          </p>
+          <p
+            class="text-gray-200 text-shadow-xs text-shadow-black text-l md:text-2xl text-center my-10 max-w-3/4"
+          >
+            After a long reflection on how much I had learned from my first
+            attempt at making an engine, followed by a short reflection on how
+            terrible of a setup it was, I started on a new project. The last
+            engine was purely made to learn, I honestly had never intended to
+            make it public at first, so it was set up to build using static
+            environment variables and manual installations of its dependencies.
+            This meant it had an incredibly high barrier of entry to building,
+            which I decided was overall Not Great. So I restarted and have
+            surpassed* how far I got in the other engine in a much shorter
+            timeframe. I've learned a lot from following vkguide, but on this
+            attempt have had much more confidence in my ability to abstract in
+            my own way and set up the engine in a way I like. <br /><br />
+            Some interesting things I've implemented:
+          </p>
+          <ul class="m-4 pl-5 text-l md:text-2xl my-10 max-w-3/4">
+            <li>Bindless Setup</li>
+            <li>Scene Graph</li>
+            <li>Frustum Culling</li>
+            <li>Point, Spot, Directional Lights</li>
+            <li>glTF/glB loading</li>
+            <li>PBR Materials</li>
+            <li>Asynchronous Mesh Uploading</li>
+            <li>Transparency and Draw Sorting</li>
+          </ul>
+          <p
+            class="text-gray-200 text-shadow-xs text-shadow-black text-l md:text-2xl text-center my-10 max-w-3/4"
+          >
+            I've tested this on my own Windows 11 machine on Vulkan 1.3.268. It uses CMake
+            FetchContent to download most of the dependencies so it 
+            <em> should </em> work fine. No promises for other setups right now.
+          </p>
+          <p
+            class="text-emerald-500 underline text-shadow-xs text-shadow-black md:text-2xl text-center my-10 max-w-3/4"
+          >
+            <a href="https://github.com/will-ixs/Sun/tree/main" target="_blank">
+              GitHub Link (Sun main Branch)
+            </a>
+          </p>
+        </SectionContent>
+      </SmoothSection>
+    </SmoothScroll>
+  </body>
+
+  <a
+    href="/"
+    class="absolute top-4 left-4 bg-emerald-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-emerald-500 transition"
+  >
+    ← Back to Home
+  </a>
+</html>

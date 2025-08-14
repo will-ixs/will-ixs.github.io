@@ -1,0 +1,79 @@
+---
+import SmoothScroll from "../../components/SmoothScroll.astro";
+import SmoothSection from "../../components/SmoothSection.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import SectionContent from "../../components/SectionContent.astro";
+---
+
+<html lang="en" class="overflow-hidden bg-cyan-950 font-sans">
+  <head>
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Reverse Engineering</title>
+    <link rel="icon" type="image/x-icon" href="/favi.jpg" />
+  </head>
+  <body>
+    <SmoothScroll>
+      <SmoothSection className="bg-gradient-to-b from-black to-cyan-950">
+        <SectionHeader title="Reverse Engineering a Keylogger" />
+        <SectionContent>
+          <img
+            class="max-w-1/2 mb-2 border-emerald-500 rounded-2xl"
+            src="/function.jpg"
+          />
+
+          <p
+            class="text-white text-shadow-xs text-shadow-black text-2xl md:text-4xl text-center font-bold my-10 max-w-1/2"
+          >
+            Overview
+          </p>
+
+          <p
+            class="text-gray-200 text-shadow-xs text-shadow-black text-l md:text-2xl text-center my-10 max-w-3/4"
+          >
+            This was a breakdown of the Ardamax keylogger. This was my final
+            project for my Reverse Engineering class, downloading a known piece
+            of malware (mine was from theZoo), doing some analysis on it, and
+            writing a report about it. Using the tools and techniques we had
+            practiced throughout the semester, the goal was to just gain as much
+            insight as possible about the malware, like what files it created,
+            what registries entries it created, if it made any network requests,
+            what, if any, it's hidden functions were.
+            <br /><br />
+            I can't post the full report with all screenshots, but I'll summarize it here: 
+            <br>I selected
+            an executable called Ardamax. It was a regular executable, it didn't
+            require any tools or dynamic analysis to unpack and decompile it. Looking
+            through Ghidra I mostly noticed functions imported form kernel32.dll
+            and user32.dll, mostly relating to reading and writing files, as well
+            as some UI. I wrote a breakdown of one function that allocated some memory
+            for a C++ objected, noted by the use of the new keyword as well as calling
+            functions offset from that memory address allocated for the C++ object
+            later on - member functions of whatever type that object is. Later in
+            the dynamic analysis I would discover this function was creating temporary
+            files to write data in chunks to. This was image data from a screenshot
+            the keylogger was taking. Once the log/screenshot was complete it would
+            rename it. The main executable created a registry key to launch it’s
+            logger at startup, and hid its executable in a hidden folder in the C:\Windows\SysWOW64
+            directory. It stored logs and full screenshots there. Removing the malware
+            was simple enough, just removing the registry key and deleting the hidden
+            logging folder was sufficient to stop it from causing any further damage.
+            There were no network requests made- so if used in a real scenario this
+            would likely be bundled with another form of spyware to retrieve that
+            data.
+          </p>
+        </SectionContent>
+      </SmoothSection>
+    </SmoothScroll>
+
+    <a
+      href="/"
+      class="absolute top-4 left-4 bg-emerald-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-emerald-500 transition"
+    >
+      ← Back to Home
+    </a>
+  </body>
+</html>

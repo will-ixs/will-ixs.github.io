@@ -1,0 +1,101 @@
+---
+import SmoothScroll from "../../components/SmoothScroll.astro";
+import SmoothSection from "../../components/SmoothSection.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import SectionContent from "../../components/SectionContent.astro";
+---
+
+<html lang="en" class="overflow-hidden bg-cyan-950 font-sans">
+  <head>
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>A* Pathfinding</title>
+    <link rel="icon" type="image/x-icon" href="/favi.jpg" />
+  </head>
+  <body>
+    <SmoothScroll>
+      <SmoothSection className="bg-gradient-to-b from-black to-cyan-950">
+        <SectionHeader title="A* Pathfinding" />
+        <SectionContent>
+          <video
+            class="max-w-1/2 mb-2 border-emerald-500 rounded-2xl"
+            autoplay
+            muted
+            loop
+          >
+            <source src="/astar.mp4" type="video/mp4" />
+            Your browser does not support HTML5 video.
+          </video>
+
+          <p
+            class="text-white text-shadow-xs text-shadow-black text-2xl md:text-4xl text-center font-bold my-10 max-w-1/2"
+          >
+            Overview
+          </p>
+
+          <p
+            class="text-gray-200 text-shadow-xs text-shadow-black text-l md:text-2xl text-center my-10 max-w-3/4"
+          >
+            This will be a brief overview of how I created the visualization,
+            not detailed explanation of the A* algorithm. If you want that check
+            out either this video by Polylog. Going into this project I had only
+            heard of A* before. I knew it existed from watching Polylog's
+            youtube video about 6 months before. In my Data Structures and
+            Algorithms class from my previous university semester, one of my
+            homework assignments was implementing Dijkstra's Algorithm, so I
+            have had some familliarity with implementing pathfinding algorithms.
+            I knew implementing A* would be similar so I wanted to do it.
+            <br /><br />
+            I decided to use Unity for this project to simplify the creation of the
+            visualization and interactability of the demo I wanted to make. I created
+            an Empty 2D scene, a prefab for the grid tiles, and a empty GameObject
+            called “GridManager” to spawn in the grid on runtime. The tile prefab
+            contained a couple sprite overlays that I could enable or disable to
+            change the color of the tile, indicating the state of the tile. Each
+            tile can either be normal, a wall, the start, the end, or a path. When
+            the position of the start and the end tile's are tracked in the GridManager
+            so that there can only be one goal and start at any time.
+
+            <br /><br />
+            At start, the GridManager generates a 16:9 grid of tiles and positions
+            the camera in the center of them. After that, every frame the GridManager
+            checks the valid neighbors of each tile and calls execution of the A*
+            script. The A* script first clears its auxilarry data structures, which
+            include a List with the path to from the start to the goal, and a Dictionary
+            with the tiles that have been checked as the key, and the cost as the
+            value. The Start and Goal are spawned at the bottom left and top right
+            respectively. After the data structures are cleared, the main pathfinding
+            function is called. When it's done the List containing the path from
+            the start to the goal is fully updated and all of the tiles have their
+            sprites overlayed to show the path on screen.
+          </p>
+
+          <p
+            class="text-gray-200 text-shadow-xs text-shadow-black text-l md:text-2xl text-center my-10 max-w-3/4"
+          >
+            *If your browser supports gestures (mouse dragging) it may have
+            input issues. Firefox works great.
+          </p>
+
+          <p
+            class="text-emerald-500 underline text-shadow-xs text-shadow-black text-l md:text-2xl text-center my-10 max-w-3/4"
+          >
+            <a href="https://will-ixs.itch.io/astar" target="_blank">
+              Itch Link
+            </a>
+          </p>
+        </SectionContent>
+      </SmoothSection>
+    </SmoothScroll>
+
+    <a
+      href="/"
+      class="absolute top-4 left-4 bg-emerald-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-emerald-500 transition"
+    >
+      ← Back to Home
+    </a>
+  </body>
+</html>

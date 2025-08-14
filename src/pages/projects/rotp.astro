@@ -1,0 +1,80 @@
+---
+import SmoothScroll from "../../components/SmoothScroll.astro";
+import SmoothSection from "../../components/SmoothSection.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import SectionContent from "../../components/SectionContent.astro";
+---
+
+<html lang="en" class="overflow-hidden bg-cyan-950 font-sans">
+  <head>
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>RotP</title>
+    <link rel="icon" type="image/x-icon" href="/favi.jpg" />
+  </head>
+  <body>
+    <SmoothScroll>
+      <SmoothSection className="bg-gradient-to-b from-black to-cyan-950">
+        <SectionHeader title="Revenge of the Pharaoh" />
+        <SectionContent>
+          <video
+            class="max-w-1/2 mb-2 border-emerald-500 rounded-2xl"
+            autoplay
+            muted
+            loop
+          >
+            <source src="/rotp.mp4" type="video/mp4" />
+            Your browser does not support HTML5 video.
+          </video>
+
+          <p
+            class="text-white text-shadow-xs text-shadow-black text-2xl md:text-4xl text-center font-bold my-10 max-w-1/2"
+          >
+            Overview
+          </p>
+
+          <p
+            class="text-gray-200 text-shadow-xs text-shadow-black text-l md:text-2xl text-center my-10 max-w-3/4"
+          >
+            Revenge of the Pharaoh is the project a top down dungeon crawler
+            game developed over a semester long game development course at my
+            university. Our group consisted of two artists and four programmers.
+            We started by deciding on some mechanics and a vibe/theme for the
+            game, created our narrative from that and made a Game Design
+            Document. We made weekly reports of progress and planned certain
+            milestones to hit throughout the semester.
+
+            <br /><br />
+            Personally I was responsible for the technical design and implementation
+            of the player character controller and attacks, the regular enemy spawning
+            system, the stage progression and checkpoint system, creating the animations
+            for the player character and enemies from the frames provided by our
+            artists in Unity, and boss animations to their current states, and all
+            3 main boss fights including their splash animations, attacks, movement
+            patterns, and behavior state machines.
+          </p>
+          <p
+            class="text-emerald-500 underline text-shadow-xs text-shadow-black text-l md:text-2xl text-center my-10 max-w-3/4"
+          >
+            <a
+              href="https://sandstorm-interactive.itch.io/revenge-of-the-pharaoh"
+              target="_blank"
+            >
+              Itch Link
+            </a>
+          </p>
+        </SectionContent>
+      </SmoothSection>
+    </SmoothScroll>
+
+    <a
+      href="/"
+      class="absolute top-4 left-4 bg-emerald-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-emerald-500 transition"
+    >
+      ← Back to Home
+    </a>
+  </body>
+</html>
