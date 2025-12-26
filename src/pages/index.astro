@@ -8,7 +8,7 @@ import ProjectCard from '../components/ProjectCard.astro';
 import ImageProjectCard from '../components/ImageProjectCard.astro';
 ---
 
-<html lang="en" class="overflow-hidden bg-gray-900 font-sans">
+<html lang="en" class="overflow-hidden bg-gray-800 font-sans">
   <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>William Stephenson</title>
@@ -16,23 +16,23 @@ import ImageProjectCard from '../components/ImageProjectCard.astro';
   </head>
   <body>
     <SmoothScroll>
-      <SmoothSection bg="bg-black">
+      <SmoothSection bg="bg-gray-800">
         <Hero/>
       </SmoothSection>
-      <SmoothSection className="bg-gradient-to-b from-black to-cyan-950">
+      <SmoothSection className="bg-gradient-to-b from-gray-800 to-cyan-950">
         <SectionHeader title="Projects"/>
         <SectionContent>
-          <ul class="flex flex-wrap gap-8 list-none mx-10 p-0 justify-center">
-            <ProjectCard title="Fluid Simulation" link="fluid" filename="pbd"> 
-              Realtime Compute Shader PBD Fluid Simulation
+          <ul class="flex flex-wrap gap-8 list-none mx-10 p-0 justify-center my-10">
+            <ProjectCard title="Raymarched Fluid Simulation" link="fluid" filename="pbd"> 
+              Realtime Compute Shader PBD Fluid Simulation. Rendered by generating and raymarching a density field.
             </ProjectCard>
             
-            <ProjectCard title="Vulkan Renderer" link="sun-renderer" filename="sponza"> 
-              Modern Forward Vulkan Renderer including Frustum Culling, Scene Graph, Bindless, PBR, Multithreading, glTF Loading and more.
+            <ProjectCard title="Modern Vulkan Renderer" link="sun-renderer" filename="sponza"> 
+              Modern Forward Vulkan Renderer including Frustum Culling, Scene Graph, Bindless, PBR, Multithreading, glTF Loading, and more.
             </ProjectCard>
             
-            <ProjectCard title="Simulating 100,000,000 particles" link="particles" filename="compute"> 
-              Using async compute queue and ping-ponging GPU buffers.   
+            <ProjectCard title="Custom Compute Particle System" link="particles" filename="compute"> 
+              Using async compute queue and ping-ponging GPU buffers. Fast & easily extensible.
             </ProjectCard>
             
             <ProjectCard title="A* Pathfinding" link="astar" filename="astar"> 

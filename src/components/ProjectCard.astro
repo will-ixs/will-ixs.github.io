@@ -13,11 +13,11 @@ const { title, link, filename } = Astro.props;
     <source src={`${filename}.mp4`} type="video/mp4" />
     Your browser does not support HTML5 video.
   </video>
-  <h5><strong>{title}</strong></h5>
-
-  <p class="text-white">
+  <p class="text-white text-3xl"><strong>{title}</strong><p>
+  <br>
+  <p class="text-gray-300 text-base">
     <slot />
   </p>
-
+  <br>
   <a class="text-emerald-500 underline" href={`/projects/${link}/`}>Read More...</a>
 </li>

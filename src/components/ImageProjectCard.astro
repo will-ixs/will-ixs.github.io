@@ -9,11 +9,11 @@ const { title, link, filename } = Astro.props;
     class="hover-play max-w-full mb-2 border-emerald-500 rounded filter brightness-50 hover:brightness-100 transition-filter duration-300 ease-in-out"
     src={`${filename}.jpg`}
   />
-  <h5><strong>{title}</strong></h5>
-
-  <p class="text-white">
+  <p class="text-white text-3xl"><strong>{title}</strong></p>
+  <br>
+  <p class="text-gray-300 text-base">
     <slot />
   </p>
-
+  <br>
   <a class="text-emerald-500 underline" href={`/projects/${link}/`}>Read More...</a>
 </li>
