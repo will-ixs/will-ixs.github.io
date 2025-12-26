@@ -69,10 +69,10 @@ import SectionContent from "../../components/SectionContent.astro";
           >
             I used my WIP Vulkan Renderer because I already had some things done
             like Image/Buffer abstractions and basic model loading. I knew I
-            wanted to implement it fully on the GPU and I'd want to isntance the
+            wanted to implement it fully on the GPU and I'd want to instance the
             particles, so the first step I took was creating a GPU buffer and
             uploading positions for all particles in a cube to make sure it
-            would work properly. I wanted to get the algorithm right on the GPU
+            would work properly. I wanted to get the algorithm right on the CPU
             first, so I could more easily identify where I'd need memory
             barriers and since debugging shaders is just more difficult in
             general.
