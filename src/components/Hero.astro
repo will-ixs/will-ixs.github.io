@@ -2,43 +2,38 @@
 import "../styles/global.css";
 ---
 
-<section class="relative w-full overflow-hidden">
-  <!-- <video
-    class="absolute top-0 left-0 w-full h-full object-cover"
-    src="/bg.mp4"
-    autoplay
-    muted
-    loop
-    playsinline></video> -->
+<nav class="flex px-5 py-4 justify-between items-center">
+  <a href="#" class="flex size-1.5 text-(--text)"
+    >WS <span class="text-(--accent)">.</span></a
+  >
+</nav>
 
-  <div class="relative z-10 flex items-center justify-center flex-col">
-    <!-- <h1
-      class="text-emerald-500 text-shadow-lg text-shadow-black text-5xl md:text-7xl font-bold transition-all duration-500 ease-out"
+<section class="relative w-full overflow-hidden">
+  <div
+    class="relative z-10 flex justify-center flex-col pt-[120px] px-[48px] pb-[80px]"
+  >
+    <div
+      class="text-xs tracking-tight uppercase text-(--accent) mb-24px flex items-center gap-[10px] before:content[''] before:w-[32px] before:h-[1px] before:bg-(--accent)"
     >
-      Howdy!
-    </h1> -->
-    <br />
+      College Station, TX
+    </div>
+    <div class="block overflow-hidden">
     <p
-      class="text-white text-shadow-sm text-shadow-black text-2xl md:text-4xl text-center font-bold my-10 max-w-1/2"
+      class="text-(--text) text-shadow-md text-5xl md:text-6xl font-bold my-10 max-w-1/2"
     >
-      I'm William Stephenson, a software developer based
-      in College Station, Texas.
+      William Stephenson
     </p>
     <p
-      class="text-gray-500 text-shadow-sm text-shadow-black text-l md:text-2xl text-center font-bold my-10 max-w-3/4"
+      class="text-(--muted) max-w-[440px] text-md leading-[1.8]"
     >
-      <em>
-        BS Computer Science, Minor in Game Design & Development from Texas A&M
-        University
+      Software developer specializing in <strong class="text-(--muted2)">high performance systems</strong>,
+      <strong class="text-(--muted2)">real-time rendering</strong>, and <strong class="text-(--muted2)">computer graphics</strong>. 
+      <br>
+      <br>
+      <em class="text-(--muted2)">
+        BS Computer Science - Texas A&M University.
       </em>
     </p>
-    <!-- <p
-      class="text-white text-shadow-xs text-shadow-black text-2xl md:text-4xl font-bold top-5 mt-60"
-    >
-      🞃
-    </p> -->
+    </div>
   </div>
-
-  <!-- <div class="absolute top-0 left-0 h-[105%] w-full bg-black opacity-70 z-0"> -->
-  <!-- </div> -->
 </section>

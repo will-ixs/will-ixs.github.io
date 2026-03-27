@@ -1,0 +1,66 @@
+---
+const {pageTitle, articleTitle, videoFileName, linkTarget, linkText } = Astro.props;
+import SmoothScroll from "./SmoothScroll.astro";
+import SmoothSection from "./SmoothSection.astro";
+import SectionHeader from "./SectionHeader.astro";
+import SectionContent from "./SectionContent.astro";
+---
+
+<html lang="en" class="overflow-hidden bg-(--bg2) font-sans">
+  <head>
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>{pageTitle}</title>
+    <link rel="icon" type="image/x-icon" href="/favi.jpg" />
+  </head>
+  <body>
+    <SmoothScroll>
+      <SmoothSection className="bg-linear-to-b from-(--bg2) to-(--bg)">
+        <SectionHeader title=`${articleTitle}` />
+        <SectionContent>
+          <video
+            class="max-w-1/2 mb-2 border-(--accent) rounded-2xl"
+            autoplay
+            muted
+            loop
+          >
+            <source src=`/${videoFileName}.mp4` type="video/mp4" />
+            Your browser does not support HTML5 video.
+          </video>
+          <strong
+            class="text-(--text) text-shadow-xs text-2xl md:text-4xl text-center font-bold my-10 max-w-1/2"
+          >
+            Overview
+        </strong>
+
+          <p
+            class="text-(--text) text-shadow-xs text-l md:text-2xl text-center my-10 max-w-3/4"
+          >
+            <slot/>
+          </p>
+
+          <p
+            class="text-(--accent) underline text-shadow-xs text-l md:text-2xl text-center my-10 max-w-3/4"
+          >
+            <a
+              href=`${linkTarget}`
+              target="_blank"
+            >
+              {linkText}
+            </a>
+          </p>
+        </SectionContent>
+      </SmoothSection>
+    </SmoothScroll>
+
+    <a
+      href="/"
+      class="absolute top-4 left-4 bg-(--accent) text-(--muted) px-4 py-2 rounded-lg shadow-lg hover:bg-(--accent2) hover:text-(--muted2) transition"
+    >
+      ← Back to Home
+    </a>
+  </body>
+</html>

@@ -1,84 +1,100 @@
 ---
-import Hero from '../components/Hero.astro';
-import SmoothScroll from '../components/SmoothScroll.astro';
-import SmoothSection from '../components/SmoothSection.astro';
-import SectionHeader from '../components/SectionHeader.astro';
-import SectionContent from '../components/SectionContent.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import ImageProjectCard from '../components/ImageProjectCard.astro';
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import SmoothScroll from "../components/SmoothScroll.astro";
+import SmoothSection from "../components/SmoothSection.astro";
+import HomeHeader from "../components/HomeHeader.astro";
+import HomeContent from "../components/HomeContent.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import Contact from "../components/Contact.astro";
 ---
 
 <html lang="en" class="overflow-hidden bg-gray-800 font-sans">
   <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>William Stephenson</title>
-    <link rel="icon" type="image/x-icon" href="/favi.jpg">
+    <link rel="icon" type="image/x-icon" href="/favi.jpg" />
   </head>
   <body>
     <SmoothScroll>
-      <SmoothSection bg="bg-gray-800">
-        <Hero/>
-      </SmoothSection>
-      <SmoothSection className="bg-gradient-to-b from-gray-800 to-cyan-950">
-        <SectionHeader title="Projects"/>
-        <SectionContent>
-          <ul class="flex flex-wrap gap-8 list-none mx-10 p-0 justify-center my-10">
-            <ProjectCard title="Raymarched Fluid Simulation" link="fluid" filename="pbd"> 
-              Realtime Compute Shader PBD Fluid Simulation. Rendered by generating and raymarching a density field.
-            </ProjectCard>
-            
-            <ProjectCard title="Modern Vulkan Renderer" link="sun-renderer" filename="sponza"> 
-              Modern Forward Vulkan Renderer including Frustum Culling, Scene Graph, Bindless, PBR, Multithreading, glTF Loading, and more.
-            </ProjectCard>
-            
-            <ProjectCard title="Custom Compute Particle System" link="particles" filename="compute"> 
-              Using async compute queue and ping-ponging GPU buffers. Fast & easily extensible.
-            </ProjectCard>
-            
-            <ProjectCard title="A* Pathfinding" link="astar" filename="astar"> 
-              Interactive demonstration/visuzliation of A* Pathfinding on an arbitrary grid. 
-            </ProjectCard>
-            
-            <ProjectCard title="Revenge of the Pharaoh" link="rotp" filename="rotp"> 
-              2D Dungeon Crawling Action Game built with a team of 6 throughout a semester in Unity.
-            </ProjectCard>
-            
-            <ProjectCard title="AR Frogger" link="frogger" filename="frog"> 
-              Augmented Reality variation of the classic Arcade game Frogger.
-            </ProjectCard>
-            
-            <ImageProjectCard title="Malware Analysis of Keylogger" link="ghidra" filename="function"> 
-              Reverse engineering and threat analysis of a live keylogger using Ghidra and other tools. 
-            </ImageProjectCard>
+      <SmoothSection bg="bg-(--bg2)">
+        <Hero />
 
-          </ul>
+        <HomeHeader title="Projects" />
+        <HomeContent>
+          <div class="grid grid-cols-3 gap-[5px]">
+            <ProjectCard
+              title="Raymarched Fluid Simulation"
+              link="fluid"
+              filename="pbd"
+              span="2"
+            >
+              Realtime Compute Shader PBD Fluid Simulation. Rendered by
+              generating and raymarching a density field.
+            </ProjectCard>
+
+            <ProjectCard
+              title="Modern Vulkan Renderer"
+              link="sun-renderer"
+              filename="sponza"
+              span="1"
+            >
+              Modern Forward Vulkan Renderer including Frustum Culling, Scene
+              Graph, Bindless, PBR, Multithreading, glTF Loading, and more.
+            </ProjectCard>
+
+            <ProjectCard title="A* Pathfinding" link="astar" filename="astar" 
+              span="1">
+              Interactive demonstration/visuzliation of A* Pathfinding on an
+              arbitrary grid.
+            </ProjectCard>
+
+            <ProjectCard
+              title="Custom Compute Particle System"
+              link="particles"
+              filename="compute"
+              span="2"
+            >
+              Using async compute queue and ping-ponging GPU buffers. Fast &
+              easily extensible.
+            </ProjectCard>
+
+            <ProjectCard
+              title="WebGPU Radiance Cascades"
+              link="rc"
+              filename="rcvid"
+              span="2"
+            >
+              Interactive radiance cascades (GI data structure) demo implemented
+              with WebGPU.
+            </ProjectCard>
+
+            <ProjectCard
+              title="Revenge of the Pharaoh"
+              link="rotp"
+              filename="rotp"
+              span="1"
+            >
+              2D Dungeon Crawling Action Game built with a team of 6 throughout
+              a semester in Unity.
+            </ProjectCard>
+          </div>
         </SectionContent>
 
-        <SectionHeader title="Contact"/>
-        <SectionContent>
-          <p class="text-white text-shadow-xs text-shadow-black text-l md:text-2xl text-center my-10 max-w-1/2 overflow-ellipsis">
-            bluesky @<a class="underline" href="https://bsky.app/profile/willowsea.bsky.social" target="_blank">willowsea</a>
-            <br>
-            github @<a class="underline" href="https://github.com/will-ixs" target="_blank">will-ixs</a>
-            <br>
-            email wmstephenson9@gmail.com
-          </p>
-        </SectionContent>
+        <HomeHeader title="About" />
+        <HomeContent>
+          <About />
+        </HomeContent>
+        
+        <HomeContent>
+          <Contact />
+        </HomeContent>
+      
       </SmoothSection>
     </SmoothScroll>
-
-<script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("video.hover-play").forEach((el) => {
-      if (!(el instanceof HTMLVideoElement)) return;
-
-      el.addEventListener("mouseenter", () => el.play());
-      el.addEventListener("mouseleave", () => {
-        el.pause();
-        el.currentTime = 0;
-      });
-    });
-  });
-</script>
   </body>
 </html>

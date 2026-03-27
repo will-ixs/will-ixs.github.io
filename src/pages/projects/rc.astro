@@ -1,0 +1,94 @@
+---
+import SmoothScroll from "../../components/SmoothScroll.astro";
+import SmoothSection from "../../components/SmoothSection.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import SectionContent from "../../components/SectionContent.astro";
+---
+
+<!-- Manually doing this instead of using Project Page template for the custom Canvas element & lack of Github link, since the code is in this repository -->
+<html lang="en" class="overflow-hidden bg-(--bg2) font-sans">
+  <head>
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Radiance Cascades</title>
+    <link rel="icon" type="image/x-icon" href="/favi.jpg" />
+    <link rel="stylesheet" href="/rc_assets/style.css" />
+  </head>
+  <body>
+    <SmoothScroll>
+      <SmoothSection className="bg-linear-to-b from-(--bg2) to-(--bg)">
+        <SectionHeader title="WebGPU Radiance Cascades" />
+        <SectionContent>
+          <video
+            class="max-w-1/2 mb-2 border-(--accent) rounded-2xl"
+            autoplay
+            muted
+            loop
+          >
+            <source src=`/rcvid.mp4` type="video/mp4" />
+            Your browser does not support HTML5 video.
+          </video>
+          <strong
+            class="text-(--text) text-shadow-xs text-2xl md:text-4xl text-center font-bold my-10 max-w-1/2"
+          >
+            Overview
+          </strong>
+          <p
+            class="text-(--text) text-shadow-xs text-l md:text-2xl text-center my-10 max-w-3/4"
+          >
+            This is my implementation of the radiance cascades global
+            illumination using WebGPU. This is not my creation, it was done
+            purely to learn WebGPU and under the data structure that I've seen
+            incredible demos on.
+            <br />
+            <br />
+            Tons of wonderful information is available online:
+            <br />
+            <a
+              class="text-(--accent) underline"
+              href="https://m4xc.dev/articles/fundamental-rc/"
+              target="_blank">https://m4xc.dev/articles/fundamental-rc/</a
+            >
+            <br />
+            <a
+              class="text-(--accent) underline"
+              href="https://radiance-cascades.com"
+              target="_blank">https://radiance-cascades.com</a
+            >
+            <br />
+            <a
+              class="text-(--accent) underline"
+              href="https://jason.today/rc"
+              target="_blank">https://jason.today/rc</a
+            >
+          </p>
+          <canvas width="512" height="512"></canvas>
+          <div class="controls">
+            <input type="color" id="colorPicker" value="#ffffff" />
+            <button id="eraser">Toggle Eraser</button>
+            <button id="clear">Clear</button>
+          </div>
+          <p
+            class="text-(--text) text-shadow-xs text-l md:text-2xl text-center my-10 max-w-3/4 mb-40"
+          >
+            Demo Canvas above. This demo is not fully representative of the
+            quality of radiance cascades. Of the many known issues (color
+            banding, light leakage), fixes have been developed which I have not
+            implemented here.
+          </p>
+          <script type="module" src="/rc_assets/webgpu.js"></script>
+        </SectionContent>
+      </SmoothSection>
+    </SmoothScroll>
+
+    <a
+      href="/"
+      class="absolute top-4 left-4 bg-(--accent) text-(--muted) px-4 py-2 rounded-lg shadow-lg hover:bg-(--accent2) hover:text-(--muted2) transition"
+    >
+      ← Back to Home
+    </a>
+  </body>
+</html>

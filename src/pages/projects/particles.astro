@@ -1,109 +1,55 @@
 ---
-import SmoothScroll from "../../components/SmoothScroll.astro";
-import SmoothSection from "../../components/SmoothSection.astro";
-import SectionHeader from "../../components/SectionHeader.astro";
-import SectionContent from "../../components/SectionContent.astro";
+import ProjectPage from "../../components/ProjectPage.astro";
 ---
 
-<html lang="en" class="overflow-hidden bg-cyan-950 font-sans">
-  <head>
-    <meta
-      charset="UTF-8"
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <title>Particles</title>
-    <link rel="icon" type="image/x-icon" href="/favi.jpg" />
-  </head>
-  <body>
-    <SmoothScroll>
-      <SmoothSection className="bg-gradient-to-b from-black to-cyan-950">
-        <SectionHeader title="Simulating Tons of Particles" />
-        <SectionContent>
-          <video
-            class="max-w-1/2 mb-2 border-emerald-500 rounded-2xl"
-            autoplay
-            muted
-            loop
-          >
-            <source src="/compute.mp4" type="video/mp4" />
-            Your browser does not support HTML5 video.
-          </video>
-          <p
-            class="text-white text-shadow-xs text-shadow-black text-2xl md:text-4xl text-center font-bold my-10 max-w-1/2"
-          >
-            Overview
-          </p>
+<ProjectPage
+  pageTitle="Particle Simulation"
+  articleTitle="Millions of Particles"
+  videoFileName="compute"
+  linkTarget="https://github.com/will-ixs/Sun/tree/particles"
+  linkText="GitHub Link (Sun particles Branch)"
+>
+  This particle system was designed to be easily extensible and flexible. There
+  are 3 main steps to creating a particle system with my implementations. First
+  create a compute shader with the prefix "particle_" (e.g. particle_spin.comp).
+  Write your compute shader describing your particles behavior. Then call
+  registerParticleSystem() to create compute pipelines and map that shaders name
+  to its pipelines. This persists for the duration of the program. To create an
+  instance of that particle system call createParticleSystem(). This takes
+  parameters for the number of particles and some other options like origin,
+  origin variance, and initial velocity variance. I used this to implement a few
+  different systems and I will describe the process for the Lorenz attractor
+  below.
+  <br />
+  <br />
+  I initialize 100,000,000 random positions and iterate on them with the Lorenz attractor.
+  They're rendered as points and colored by their world space velocity, leading to
+  the pretty pattern shown. The particles are so dense at this volume that the attractor
+  appears solid until the camera gets almost inside path formed by the attractor.
+  <br /><br />
+  First initialize the particle data on cpu/host buffers then copy that data into
+  gpu/device buffers. I create two position buffers so that the compute for the next
+  frame can run while the rendering of the current frame is going on in a classic
+  ping-pong style buffer situation. On frame N I write to buffer A. Start rendering
+  while reading from buffer A. Then without blocking I start compute for frame N+1
+  writing to buffer B, also reading from buffer A. At particle counts as high in the
+  example video it doesn't matter so much since the bottleneck is the compute time,
+  but for lower particle counts and having multiple particle systems concurrently,
+  overlapping the work with the previous frame's rendering can be a valuable optimization.
+  <br /><br />
+  This setup can easily be extended to a more practical particle system by instancing
+  a billboarded quad with a sampled textures rather than colored points, but the points
+  are suffificent to show the concept and looked good the visuzliation that I already
+  wanted to make. The rendering work for billboarded quads and texture fetches would
+  be much slower than simple shader currently used resulting in less particles but
+  more quality per particle. The current setup for calculating the next position is
+  a single compute shader which bases input purely on the previous position, which
+  is always available to read since it is necessary for the render.
+</ProjectPage>
 
-          <p
-            class="text-gray-200 text-shadow-xs text-shadow-black text-l md:text-2xl text-center my-10 max-w-3/4"
-          >
-            This particle system was designed to be easily extensible and
-            flexible. There are 3 main steps to creating a particle system with
-            my implementations. First create a compute shader with the prefix
-            "particle_" (e.g. particle_spin.comp). Write your compute shader
-            describing your particles behavior. Then call
-            registerParticleSystem() to create compute pipelines and map that
-            shaders name to its pipelines. This persists for the duration of the
-            program. To create an instance of that particle system call
-            createParticleSystem(). This takes parameters for the number of
-            particles and some other options like origin, origin variance, and
-            initial velocity variance. I used this to implement a few different
-            systems and I will describe the process for the Lorenz attractor
-            below.
-          </p>
-          <p
-            class="text-gray-200 text-shadow-xs text-shadow-black text-l md:text-2xl text-center my-10 max-w-3/4"
-          >
-            I initialize 100,000,000 random positions and iterate on them with
-            the Lorenz attractor. They're rendered as points and colored by
-            their world space velocity, leading to the pretty pattern shown. The
-            particles are so dense at this volume that the attractor appears
-            solid until the camera gets almost inside path formed by the
-            attractor.
-            <br /><br />
-            First initialize the particle data on cpu/host buffers then copy that
-            data into gpu/device buffers. I create two position buffers so that the
-            compute for the next frame can run while the rendering of the current
-            frame is going on in a classic ping-pong style buffer situation. On frame
-            N I write to buffer A. Start rendering while reading from buffer A. Then
-            without blocking I start compute for frame N+1 writing to buffer B, also
-            reading from buffer A. At particle counts as high in the example video
-            it doesn't matter so much since the bottleneck is the compute time, but
-            for lower particle counts and having multiple particle systems concurrently,
-            overlapping the work with the previous frame's rendering can be a valuable
-            optimization.
-            <br /><br />
-            This setup can easily be extended to a more practical particle system
-            by instancing a billboarded quad with a sampled textures rather than colored
-            points, but the points are suffificent to show the concept and looked
-            good the visuzliation that I already wanted to make. The rendering work
-            for billboarded quads and texture fetches would be much slower than simple
-            shader currently used resulting in less particles but more quality per
-            particle. The current setup for calculating the next position is a single
-            compute shader which bases input purely on the previous position, which
-            is always available to read since it is necessary for the render.
-          </p>
-
-          <p
-            class="text-emerald-500 underline text-shadow-xs text-shadow-black text-l md:text-2xl text-center my-10 max-w-3/4"
-          >
-            <a
-              href="https://github.com/will-ixs/Sun/tree/particles"
-              target="_blank"
-            >
-              GitHub Link (Sun particles Branch)
-            </a>
-          </p>
-        </SectionContent>
-      </SmoothSection>
-    </SmoothScroll>
-
-    <a
-      href="/"
-      class="absolute top-4 left-4 bg-emerald-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-emerald-500 transition"
-    >
-      ← Back to Home
-    </a>
-  </body>
-</html>
+<a
+  href="/"
+  class="absolute top-4 left-4 bg-emerald-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-emerald-500 transition"
+>
+  ← Back to Home
+</a>

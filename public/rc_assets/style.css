@@ -1,0 +1,60 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  --bg: #07090f;
+  --bg2: #0d1117;
+  --surface: #111820;
+  --surface2: #16202b;
+  --border: rgba(255, 255, 255, 0.06);
+  --accent: #00e5a0;
+  --accent2: #00b8ff;
+  --text: #e8edf5;
+  --muted: #5a6a7e;
+  --muted2: #8a9bb0;
+}
+
+canvas {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: crosshair;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+input[type="color"] {
+  margin-top: 10px;
+  width: 32px;
+  height: 32px;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg);
+  cursor: pointer;
+}
+
+button {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted2);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+button:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+button.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--bg2);
+}

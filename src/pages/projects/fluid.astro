@@ -1,132 +1,81 @@
 ---
-import SmoothScroll from "../../components/SmoothScroll.astro";
-import SmoothSection from "../../components/SmoothSection.astro";
-import SectionHeader from "../../components/SectionHeader.astro";
-import SectionContent from "../../components/SectionContent.astro";
+import ProjectPage from "../../components/ProjectPage.astro";
 ---
 
-<html lang="en" class="overflow-hidden bg-cyan-950 font-sans">
-  <head>
-    <meta
-      charset="UTF-8"
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <title>Raymarched PBD Fluid Simulation</title>
-    <link rel="icon" type="image/x-icon" href="/favi.jpg" />
-  </head>
-  <body>
-    <SmoothScroll>
-      <SmoothSection className="bg-gradient-to-b from-black to-cyan-950">
-        <SectionHeader title="Position Based Fluids" />
-        <SectionContent>
-          <video
-            class="max-w-1/2 mb-2 border-emerald-500 rounded-2xl"
-            autoplay
-            muted
-            loop
-          >
-            <source src="/pbd.mp4" type="video/mp4" />
-            Your browser does not support HTML5 video.
-          </video>
-          <p
-            class="text-white text-shadow-xs text-shadow-black text-2xl md:text-4xl text-center font-bold my-10 max-w-1/2"
-          >
-            Overview
-          </p>
-          <p
-            class="text-gray-200 text-shadow-xs text-shadow-black text-l md:text-2xl text-center my-10 max-w-3/4"
-          >
-            This was my final project for my computer animation course where we
-            were given the freedom to implement anything beyond or within the
-            scope of the class. Our professor, Dr. Sueda, after our PBD cloth
-            simulation assignment had linked a website with other applications
-            for PBD.
-            <br /><br />
-            I had decided I wanted to do PBF sometime in the future anyway, so I
-            decided to use that for my final project. We had to make a project proposal
-            where I initially and suggested a slightly older paper but Dr. Sueda
-            directed me to
-            <a
-              class="text-emerald-500 underline"
-              href="https://mmacklin.com/pbf_sig_preprint.pdf"
-              target="_blank"
-            >
-              Position Based Fluids
-            </a> by Miles Macklin and Matthias Muller. I liked his suggestion. He
-            made sure I was aware of some of the challenges that I'd face which weren't
-            within the scope of the class, (e.g. instanced rendering) and with his
-            approval I had my project decided.
-          </p>
+<ProjectPage
+  pageTitle="Raymarched PBD Fluid Simulation"
+  articleTitle="Position Based Fluids"
+  videoFileName="pbd"
+  linkTarget="https://github.com/will-ixs/Sun/tree/PBD"
+  linkText="GitHub Link (Sun PBD Branch)"
+>
+  This was my final project for my computer animation course where we were given
+  the freedom to implement anything beyond or within the scope of the class. Our
+  professor, Dr. Sueda, after our PBD cloth simulation assignment had linked a
+  website with other applications for PBD.
+  <br /><br />
+  I had decided I wanted to do PBF sometime in the future anyway, so I decided to
+  use that for my final project. We had to make a project proposal where I initially
+  and suggested a slightly older paper but Dr. Sueda directed me to
+  <a
+    class="text-(--accent) underline"
+    href="https://mmacklin.com/pbf_sig_preprint.pdf"
+    target="_blank">Position Based Fluids</a
+  > by Miles Macklin and Matthias Muller. I liked his suggestion. He made sure I was
+  aware of some of the challenges that I'd face which weren't within the scope of
+  the class, (e.g. instanced rendering) and with his approval I had my project decided.
+  <br />
+  <br />
+  <br />
+  <br />
+  <strong
+    class="text-(--text) text-shadow-xs text-2xl md:text-4xl text-center font-bold my-10 max-w-1/2"
+  >
+    Process
+  </strong>
+  <br />
+  <br />
+  I used my WIP Vulkan Renderer because I already had some things done like Image/Buffer
+  abstractions and basic model loading. I knew I wanted to implement it fully on the
+  GPU and I'd want to instance the particles, so the first step I took was creating
+  a GPU buffer and uploading positions for all particles in a cube to make sure it
+  would work properly. I wanted to get the algorithm right on the CPU first, so I
+  could more easily identify where I'd need memory barriers and since debugging shaders
+  is just more difficult in general.
+  <br /><br />
+  I added gravity and constrained the particles between two points to just keep them
+  in a box. I implemented the PBF algorithm in the order it was presented in the paper,
+  first applying gravity and predicting positions, creating lists of neighbors for
+  each particle, and then executing the solver algorithm. This first requried estimating
+  the density by and calculating the density at each particle and then estimating
+  the gradient of the density so that we could apply a force in the opposite direction,
+  towards the rest density and update the velocity. Then using the new velocity we
+  apply vorticity and viscosity calculations, and do a final position update.
+  <br /><br />
+  Finding neighboring particles and accessing their properties is the most intensive
+  step of this calculation as brute forcing would be way too slow with the amount
+  of particles that we want. To slightly improve memory access patterns we have separate
+  GPU buffers for each attribute of each particle (position, velocity, etc...). To
+  avoid brute force checking each particle on each stage of the algorithm we implement
+  the spatial hash grid using atomics as described in the
+  <a
+    class="text-(--accent) underline"
+    href="https://developer.download.nvidia.com/compute/cuda/2_2/sdk/website/projects/particles/doc/particles.pdf"
+    target="_blank"
+  >
+    Cuda Particles Nvidia whitepaper</a>. 
+  We hash the particles position and use that to place it into a bucket, then
+  for each particle have a list of indices into each buffer. This optimization
+  allows for simulation of >200,000 particles in realtime on my home pc setup
+  (RTX 4070). I used basic full memory read/write barriers to synchronize access
+  between compute pipelines. I imagine the majority of the optimization left
+  would be in further optimizing memory access but I was very happy with the
+  effect that I managed to achieve with this minimal setup.
+</ProjectPage>
 
-          <p
-            class="text-white text-shadow-xs text-shadow-black text-2xl md:text-4xl text-center font-bold my-10 max-w-1/2"
-          >
-            Process
-          </p>
-          <p
-            class="text-gray-200 text-shadow-xs text-shadow-black text-l md:text-2xl text-center my-10 max-w-3/4"
-          >
-            I used my WIP Vulkan Renderer because I already had some things done
-            like Image/Buffer abstractions and basic model loading. I knew I
-            wanted to implement it fully on the GPU and I'd want to instance the
-            particles, so the first step I took was creating a GPU buffer and
-            uploading positions for all particles in a cube to make sure it
-            would work properly. I wanted to get the algorithm right on the CPU
-            first, so I could more easily identify where I'd need memory
-            barriers and since debugging shaders is just more difficult in
-            general.
-            <br /><br />
-            I added gravity and constrained the particles between two points to just
-            keep them in a box. I implemented the PBF algorithm in the order it was
-            presented in the paper, first applying gravity and predicting positions,
-            creating lists of neighbors for each particle, and then executing the
-            solver algorithm. This first requried estimating the density by and calculating
-            the density at each particle and then estimating the gradient of the
-            density so that we could apply a force in the opposite direction, towards
-            the rest density and update the velocity. Then using the new velocity
-            we apply vorticity and viscosity calculations, and do a final position
-            update.
-            <br /><br />
-            Finding neighboring particles and accessing their properties is the most
-            intensive step of this calculation as brute forcing would be way too
-            slow with the amount of particles that we want. To slightly improve memory
-            access patterns we have separate GPU buffers for each attribute of each
-            particle (position, velocity, etc...). To avoid brute force checking
-            each particle on each stage of the algorithm we implement the spatial
-            hash grid using atomics as described in the
-            <a
-              class="text-emerald-500 underline"
-              href="https://developer.download.nvidia.com/compute/cuda/2_2/sdk/website/projects/particles/doc/particles.pdf"
-              target="_blank"
-            >
-              Cuda Particles Nvidia whitepaper
-            </a> . We hash the particles position and use that to place it into a
-            bucket, then for each particle have a list of indices into each buffer.
-            This optimization allows for simulation of >200,000 particles in realtime
-            on my home pc setup (RTX 4070). I used basic full memory read/write barriers
-            to synchronize access between compute pipelines. I imagine the majority
-            of the optimization left would be in further optimizing memory access
-            but I was very happy with the effect that I managed to achieve with this
-            minimal setup.
-          </p>
-
-          <p
-            class="text-emerald-500 underline text-shadow-xs text-shadow-black text-l md:text-2xl text-center my-10 max-w-3/4"
-          >
-            <a href="https://github.com/will-ixs/Sun/tree/PBD" target="_blank">
-              GitHub Link (Sun PBD Branch)
-            </a>
-          </p>
-        </SectionContent>
-      </SmoothSection>
-    </SmoothScroll>
-
-    <a
-      href="/"
-      class="absolute top-4 left-4 bg-emerald-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-emerald-500 transition"
-    >
-      ← Back to Home
-    </a>
-  </body>
-</html>
+<a
+  href="/"
+  class="absolute top-4 left-4 bg-emerald-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-(--accent) transition"
+>
+  ← Back to Home
+</a>
