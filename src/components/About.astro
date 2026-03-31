@@ -3,27 +3,27 @@ import "../styles/global.css";
 ---
 
 <section class="relative w-full overflow-hidden">
-  <div class="grid grid-cols-2 gap-[40px] items-start">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
     <!-- abt text -->
-    <div class="text-(--muted2) text-sm leading-[2]">
-      <p class="mb-[20px]">
+    <div class="text-(--muted2) text-sm leading-loose">
+      <p class="mb-5">
         I'm <strong>William Stephenson</strong>, a software developer with a
         deep passion for
         <strong>real-time graphics</strong> and low-level systems programming. I love
         building things at the intersection of math, physics, and visual computing.
       </p>
-      <p class="mb-[20px]">
+      <p class="mb-5">
         My work spans from custom Vulkan renderers with PBR lighting and frustum
         culling, to GPU-accelerated particle systems and fluid simulations using
         compute shaders. I'm equally comfortable working on gameplay systems,
         reverse engineering, and AR experiences.
       </p>
-      <p class="mb-[20px]">
+      <p class="mb-5">
         I approach every project with a focus on <strong>performance</strong>,
         clean architecture, and pushing hardware to its limits.
       </p>
       <div
-        class="inline-flex items-center gap-[10px] mt-[12px] px-[10px] py-[16px] border-2 border-solid border-(--border) rounded-sm text-sm"
+        class="inline-flex items-center gap-2.5 mt-3 px-2.5 py-4 border-2 border-solid border-(--border) rounded-sm text-sm"
       >
         <span class="text-(--accent)">▸</span>
         BS Computer Science, Minor in Game Design & Development — Texas A&M
@@ -31,16 +31,16 @@ import "../styles/global.css";
     </div>
 
     <!-- skill grid thingy -->
-    <div class="flex flex-col gap-[24px]">
+    <div class="flex flex-col gap-6">
       <!-- category box -->
       <div
-        class="px-[20px] py-[24px] bg-(--surface) border-2 border-solid border-(--border)"
+        class="px-5 py-6 bg-(--surface) border-2 border-solid border-(--border)"
       >
         <!-- category name -->
-        <div class="text-xs uppercase text-(--accent) mb-[12px]">Languages</div>
+        <div class="text-xs uppercase text-(--accent) mb-3">Languages</div>
         <!-- category entries -->
         <div
-          class="flex flex-wrap gap-[8px] *:text-xs *:px-[8px] *:py-[8px] *:bg-(--surface2) text-(--muted2) *:border-2 *:border-solid *:border-(--border) *:rounded-xs"
+          class="flex flex-wrap gap-2 *:text-xs *:px-2 *:py-2 *:bg-(--surface2) text-(--muted2) *:border-2 *:border-solid *:border-(--border) *:rounded-xs"
         >
           <span> C++ </span>
           <span> C </span>
@@ -55,13 +55,13 @@ import "../styles/global.css";
         </div>
       </div>
       <div
-        class="px-[20px] py-[24px] bg-(--surface) border-2 border-solid border-(--border)"
+        class="px-5 py-6 bg-(--surface) border-2 border-solid border-(--border)"
       >
         <!-- category name -->
-        <div class="text-xs uppercase text-(--accent) mb-[12px]">Tools</div>
+        <div class="text-xs uppercase text-(--accent) mb-3">Tools</div>
         <!-- category entries -->
         <div
-          class="flex flex-wrap gap-[8px] *:text-xs *:px-[8px] *:py-[8px] *:bg-(--surface2) text-(--muted2) *:border-2 *:border-solid *:border-(--border) *:rounded-xs"
+          class="flex flex-wrap gap-2 *:text-xs *:px-2 *:py-2 *:bg-(--surface2) text-(--muted2) *:border-2 *:border-solid *:border-(--border) *:rounded-xs"
         >
           <span> RenderDoc </span>
           <span> NSight Graphics </span>
@@ -72,15 +72,15 @@ import "../styles/global.css";
         </div>
       </div>
       <div
-        class="px-[20px] py-[24px] bg-(--surface) border-2 border-solid border-(--border)"
+        class="px-5 py-6 bg-(--surface) border-2 border-solid border-(--border)"
       >
         <!-- category name -->
-        <div class="text-xs uppercase text-(--accent) mb-[12px]">
+        <div class="text-xs uppercase text-(--accent) mb-3">
           APIs & Libraries
         </div>
         <!-- category entries -->
         <div
-          class="flex flex-wrap gap-[8px] *:text-xs *:px-[8px] *:py-[8px] *:bg-(--surface2) text-(--muted2) *:border-2 *:border-solid *:border-(--border) *:rounded-xs"
+          class="flex flex-wrap gap-2 *:text-xs *:px-2 *:py-2 *:bg-(--surface2) text-(--muted2) *:border-2 *:border-solid *:border-(--border) *:rounded-xs"
         >
           <span> Vulkan </span>
           <span> OpenGL </span>

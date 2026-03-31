@@ -3,7 +3,7 @@ const { title, link, filename, span} = Astro.props;
 ---
 
 <div
-  class=`relative text-center ${span === "2" ? 'col-span-2' : 'col-span-1'} overflow-hidden transition-all duration-200 no-underline`
+  class=`relative text-center col-span-1 ${span === "2" ? 'md:col-span-2' : 'md:col-span-1'} overflow-hidden transition-all duration-200 no-underline`
 >
   <!-- card -->
   <div class="relative justify-center aspect-video overflow-hidden bg-(--bg)">
@@ -20,20 +20,20 @@ const { title, link, filename, span} = Astro.props;
   </div>
   <!-- overlay -->
   <div
-    class="absolute inset-0 flex flex-col justify-end p-[28px] bg-gradient-to-t from-0% from-(--bg) via-20% via-(--bg2) to-70% to-transparent"
+    class="absolute inset-0 flex flex-col justify-end md:p-7 p-3 bg-linear-to-t from-0% from-(--bg) via-20% via-(--bg2) to-70% to-transparent"
   >
     <!-- title  -->
     <div
-      class="text-(--text) text-left text-xl font-bold tracking-tight mb-[8px]"
+      class="text-(--text) text-left md:text-xl text-sm font-bold tracking-tight mb-2"
     >
       {title}
     </div>
     <!-- description -->
-    <div class="text-(--muted2) text-left text-sm mb-[16px] max-w-[400px]">
+    <div class="text-(--muted2) text-left text-sm mb-4 max-w-100">
       <slot />
     </div>
     <!-- link -->
-    <div class="text-(--accent) text-left text-sm">
+    <div class="text-(--accent) text-left text-xs md:text-sm">
       <a href={`/projects/${link}/`}
         >Read More...</a
       >
