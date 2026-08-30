@@ -4,7 +4,7 @@ import ProjectPage from "../../components/ProjectPage.astro";
 
 <ProjectPage
   pageTitle="Particle Simulation"
-  articleTitle="Millions of Particles"
+  articleTitle="Custom Compute Particle System"
   videoFileName="compute"
   linkTarget="https://github.com/will-ixs/Sun/tree/particles"
   linkText="GitHub Link (Sun particles Branch)"
@@ -16,40 +16,37 @@ import ProjectPage from "../../components/ProjectPage.astro";
   registerParticleSystem() to create compute pipelines and map that shaders name
   to its pipelines. This persists for the duration of the program. To create an
   instance of that particle system call createParticleSystem(). This takes
-  parameters for the number of particles and some other options like origin,
-  origin variance, and initial velocity variance. I used this to implement a few
-  different systems and I will describe the process for the Lorenz attractor
-  below.
+  parameters for the number of particles and some other optional values like
+  origin, origin variance, and initial velocity variance.
   <br />
   <br />
-  I initialize 100,000,000 random positions and iterate on them with the Lorenz attractor.
-  They're rendered as points and colored by their world space velocity, leading to
-  the pretty pattern shown. The particles are so dense at this volume that the attractor
-  appears solid until the camera gets almost inside path formed by the attractor.
+  Currnetly the particles are rendered as points and use their world space velocity
+  as their color. In the first demo I offline generated a vector field for each frame
+  and uploaded it as a 3d texture on engine startup. Each particle sampled the texture
+  using its position in the x-y plane and the z as time the particle system had been
+  alive. In the second demo I was trying to test the maximum number of particles
+  I could run on my computer. I found I was heavily GPU memory bound. I could I initialize
+  100,000,000 random positions. The particles are so dense at this volume that the
+  Lorenz attractor appears solid until the camera gets almost inside path formed. 
   <br /><br />
-  First initialize the particle data on cpu/host buffers then copy that data into
-  gpu/device buffers. I create two position buffers so that the compute for the next
-  frame can run while the rendering of the current frame is going on in a classic
-  ping-pong style buffer situation. On frame N I write to buffer A. Start rendering
-  while reading from buffer A. Then without blocking I start compute for frame N+1
-  writing to buffer B, also reading from buffer A. At particle counts as high in the
-  example video it doesn't matter so much since the bottleneck is the compute time,
-  but for lower particle counts and having multiple particle systems concurrently,
-  overlapping the work with the previous frame's rendering can be a valuable optimization.
+  Upon calling registerParticleSystem() the initial the particle data is mapped to
+  the particle system's name. Then when createParticleSystem() is called that initial
+  data is copied to a GPU buffer and a ParticleSystem is added to the active list.
+  When that ParticleSystem's timer expires the ParticleSystem is queued for deletion
+  after that update cycle. Then the buffers are destroyed and memory is freed up.
+  I use two position buffers to ping-pong reading and writing. So that compute for
+  frame N+1 can be done while rendering for frame N is still occuring. At particle
+  counts as high in the example video it doesn't matter so much since the bottleneck
+  is the compute time, but for lower particle counts and having multiple particle
+  systems concurrently, overlapping the work with the previous frame's rendering can
+  be a valuable optimization.
   <br /><br />
   This setup can easily be extended to a more practical particle system by instancing
   a billboarded quad with a sampled textures rather than colored points, but the points
-  are suffificent to show the concept and looked good the visuzliation that I already
+  are suffificent to show the concept and looked good in the visuzliations that I already
   wanted to make. The rendering work for billboarded quads and texture fetches would
   be much slower than simple shader currently used resulting in less particles but
   more quality per particle. The current setup for calculating the next position is
   a single compute shader which bases input purely on the previous position, which
   is always available to read since it is necessary for the render.
 </ProjectPage>
-
-<a
-  href="/"
-  class="absolute top-4 left-4 bg-emerald-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-emerald-500 transition"
->
-  ← Back to Home
-</a>

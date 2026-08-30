@@ -27,7 +27,8 @@ import ProjectPage from "../../components/ProjectPage.astro";
   Notable features implemented in this iteration include a bindless resource setup,
   a scene graph, frustum culling, support for point, spot, and directional lights,
   glTF/glB asset loading, PBR materials, asynchronous mesh uploading, transparency
-  with draw call sorting, and a fully custom async compute particle system.
+  with draw call sorting, hot shader recompilation and loading, and a fully custom
+  async compute particle system.
   <br />
   <br />
   Sun has been validated on Windows 11 using Vulkan 1.3.268. Dependencies are managed
@@ -35,10 +36,3 @@ import ProjectPage from "../../components/ProjectPage.astro";
   most configurations, though compatibility across all environments cannot be guaranteed
   at this stage.
 </ProjectPage>
-
-<a
-  href="/"
-  class="absolute top-4 left-4 bg-emerald-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-emerald-500 transition"
->
-  ← Back to Home
-</a>

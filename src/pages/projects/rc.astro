@@ -3,6 +3,7 @@ import SmoothScroll from "../../components/SmoothScroll.astro";
 import SmoothSection from "../../components/SmoothSection.astro";
 import SectionHeader from "../../components/SectionHeader.astro";
 import SectionContent from "../../components/SectionContent.astro";
+import "../../styles/global.css"
 ---
 
 <!-- Manually doing this instead of using Project Page template for the custom Canvas element & lack of Github link, since the code is in this repository -->
@@ -41,11 +42,11 @@ import SectionContent from "../../components/SectionContent.astro";
           >
             This is my implementation of the radiance cascades global
             illumination using WebGPU. This is not my creation, it was done
-            purely to learn WebGPU and under the data structure that I've seen
-            incredible demos on.
+            purely to learn WebGPU and understand the data structure that I've seen
+            beautiful demos of.
             <br />
             <br />
-            Tons of wonderful information is available online:
+            The folowing links contained very helpful information:
             <br />
             <a
               class="text-(--accent) underline"
@@ -69,15 +70,17 @@ import SectionContent from "../../components/SectionContent.astro";
           <div class="controls">
             <input type="color" id="colorPicker" value="#ffffff" />
             <button id="eraser">Toggle Eraser</button>
-            <button id="clear">Clear</button>
+            <button id="clear">Clear Canvas</button>
           </div>
           <p
             class="text-(--text) text-shadow-xs text-l md:text-2xl text-center my-10 max-w-3/4 mb-40"
           >
             Demo Canvas above. This demo is not fully representative of the
-            quality of radiance cascades. Of the many known issues (color
+            quality that can be achieved radiance cascades. Of the many known issues (color
             banding, light leakage), fixes have been developed which I have not
             implemented here.
+            <br><br>
+              I find it looks best with highly vibrant colors like in the demo video.
           </p>
           <script type="module" src="/rc_assets/webgpu.js"></script>
         </SectionContent>
@@ -86,9 +89,9 @@ import SectionContent from "../../components/SectionContent.astro";
 
     <a
       href="/"
-      class="absolute top-4 left-4 bg-(--accent) text-(--muted) px-4 py-2 rounded-lg shadow-lg hover:bg-(--accent2) hover:text-(--muted2) transition"
+      class="absolute top-4 left-4 bg-(--accent) text-(--bg ) px-4 py-2 rounded-lg shadow-lg hover:bg-(--accent2) hover:text-(--muted2) transition"
     >
-      ← Back to Home
+      ← Home
     </a>
   </body>
 </html>

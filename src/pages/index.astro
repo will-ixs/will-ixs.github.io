@@ -22,57 +22,57 @@ import Contact from "../components/Contact.astro";
   <body>
     <SmoothScroll>
       <SmoothSection bg="bg-(--bg2)">
-        <Hero />
+        <!-- <Hero /> -->
 
         <HomeHeader title="Projects" />
         <HomeContent>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-1.25">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-1.25">
+            
+            
+            
+            <ProjectCard
+            title="Custom Compute Particle System"
+            link="particles"
+            filename="compute"
+            span="1"
+            >
+            Using async compute queue and ping-ponging GPU buffers. Fast &
+            easily extensible.
+          </ProjectCard>
+          <ProjectCard
+          title="WebGPU Radiance Cascades"
+          link="rc"
+          filename="rcvid"
+          span="1"
+          >
+          Interactive radiance cascades (GI data structure) demo implemented
+          with WebGPU.
+        </ProjectCard>
+          
+          <ProjectCard
+          title="Modern Vulkan Renderer"
+          link="sun-renderer"
+            filename="sponza"
+            span="1"
+            >
+            Modern Forward Vulkan Renderer including Frustum Culling, Scene
+            Graph, Bindless, PBR, Multithreading, glTF Loading, and more.
+          </ProjectCard>
             <ProjectCard
               title="Raymarched Fluid Simulation"
               link="fluid"
               filename="pbd"
-              span="2"
+              span="1"
             >
               Realtime Compute Shader PBD Fluid Simulation. Rendered by
               generating and raymarching a density field.
             </ProjectCard>
-
-            <ProjectCard
-              title="Modern Vulkan Renderer"
-              link="sun-renderer"
-              filename="sponza"
-              span="1"
-            >
-              Modern Forward Vulkan Renderer including Frustum Culling, Scene
-              Graph, Bindless, PBR, Multithreading, glTF Loading, and more.
-            </ProjectCard>
-
-            <ProjectCard title="A* Pathfinding" link="astar" filename="astar" 
-              span="1">
-              Interactive demonstration/visuzliation of A* Pathfinding on an
-              arbitrary grid.
-            </ProjectCard>
-
-            <ProjectCard
-              title="Custom Compute Particle System"
-              link="particles"
-              filename="compute"
-              span="2"
-            >
-              Using async compute queue and ping-ponging GPU buffers. Fast &
-              easily extensible.
-            </ProjectCard>
-
-            <ProjectCard
-              title="WebGPU Radiance Cascades"
-              link="rc"
-              filename="rcvid"
-              span="2"
-            >
-              Interactive radiance cascades (GI data structure) demo implemented
-              with WebGPU.
-            </ProjectCard>
-
+          
+          <ProjectCard title="A* Pathfinding" link="astar" filename="astar" 
+            span="1">
+            Interactive demonstration/visuzliation of A* Pathfinding on an
+            arbitrary grid.
+          </ProjectCard>
             <ProjectCard
               title="Revenge of the Pharaoh"
               link="rotp"
@@ -83,7 +83,7 @@ import Contact from "../components/Contact.astro";
               a semester in Unity.
             </ProjectCard>
           </div>
-        </SectionContent>
+        </HomeContent>
 
         <HomeHeader title="About" />
         <HomeContent>

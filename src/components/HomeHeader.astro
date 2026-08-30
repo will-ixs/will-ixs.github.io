@@ -2,10 +2,12 @@
 const { title } = Astro.props;
 ---
 
-<div class="relative z-10 h-full flex flex-col justify-center py-5 px-12">
-    <h1
-      class="text-(--text) text-shadow-lg text-5xl md:text-6xl font-bold my-5"
-    >
+<div
+  class="relative z-10 h-full flex flex-col items-center justify-center pt-5 px-12 pb-5"
+>
+  <h1
+    class="text-(--text) text-shadow-lg text-5xl md:text-6xl font-bold transition-all duration-500 ease-out my-5"
+  >
       {title}
     </h1>
 </div>

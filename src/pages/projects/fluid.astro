@@ -9,15 +9,12 @@ import ProjectPage from "../../components/ProjectPage.astro";
   linkTarget="https://github.com/will-ixs/Sun/tree/PBD"
   linkText="GitHub Link (Sun PBD Branch)"
 >
-  This was my final project for my computer animation course where we were given
-  the freedom to implement anything beyond or within the scope of the class. Our
-  professor, Dr. Sueda, after our PBD cloth simulation assignment had linked a
-  website with other applications for PBD.
-  <br /><br />
-  I had decided I wanted to do PBF sometime in the future anyway, so I decided to
-  use that for my final project. We had to make a project proposal where I initially
-  and suggested a slightly older paper but Dr. Sueda directed me to
-  <a
+  This project started as final project for my computer animation course where
+  we were given the freedom to implement anything beyond or within the scope of
+  the class. Dr. Sueda, our professor, linked us a website containing other
+  applications for PBD after our PBD cloth simulation project. On that site I
+  found the original PBD fluids paper, which I brought to him as my final
+  project proposal. Dr. Sueda directed me to a more recent paper, <a
     class="text-(--accent) underline"
     href="https://mmacklin.com/pbf_sig_preprint.pdf"
     target="_blank">Position Based Fluids</a
@@ -57,25 +54,30 @@ import ProjectPage from "../../components/ProjectPage.astro";
   of particles that we want. To slightly improve memory access patterns we have separate
   GPU buffers for each attribute of each particle (position, velocity, etc...). To
   avoid brute force checking each particle on each stage of the algorithm we implement
-  the spatial hash grid using atomics as described in the
-  <a
+  the spatial hash grid using atomics as described in the <a
     class="text-(--accent) underline"
     href="https://developer.download.nvidia.com/compute/cuda/2_2/sdk/website/projects/particles/doc/particles.pdf"
-    target="_blank"
-  >
-    Cuda Particles Nvidia whitepaper</a>. 
-  We hash the particles position and use that to place it into a bucket, then
-  for each particle have a list of indices into each buffer. This optimization
-  allows for simulation of >200,000 particles in realtime on my home pc setup
-  (RTX 4070). I used basic full memory read/write barriers to synchronize access
-  between compute pipelines. I imagine the majority of the optimization left
-  would be in further optimizing memory access but I was very happy with the
-  effect that I managed to achieve with this minimal setup.
+    target="_blank">Cuda Particles Nvidia whitepaper</a
+  >. We hash the floor of the particles position and use that to place it into a
+  bucket, then for each particle have a list of indices into each buffer. This
+  optimization allows for simulation of >200,000 particles in realtime on my
+  home pc setup. I used basic full memory read/write barriers to synchronize
+  access between compute pipelines. I imagine the majority of the optimization
+  left would be in further optimizing memory access but I was very happy with
+  the effect that I managed to achieve with this minimal setup.
+  <br /><br />
+  I instanced a basic sphere model at each of the positions and modified the color
+  based on the particle's velocity. This was all I completed before the project was
+  due, but I kept working on the visualization afterward. After the neigbor lists
+  were created I dispatch a separate compute shader to calculate the density at each
+  point. The bounding box of the simulation is divided into equal size voxels. Each
+  invocation of the shader computes the density within one of those voxels by counting
+  how many neighbors the position at the center of that cell would have. After this
+  the constraints are solved and the rest of the simulation occurs as normal, just
+  now we have a 3d texture containing the densities.
+  <br /><br />
+  Instead of instancing spheres at each position, I write a fullscreen quad and raymarch
+  through the 3d density texture to create the visualization. I accumulate light as
+  a march through, marking how much fluid I've already been through to determine how
+  much the current step impacts the final color.
 </ProjectPage>
-
-<a
-  href="/"
-  class="absolute top-4 left-4 bg-emerald-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-(--accent) transition"
->
-  ← Back to Home
-</a>
